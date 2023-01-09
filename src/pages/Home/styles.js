@@ -48,14 +48,24 @@ export const CompanyLogo = styled.img`
 `;
 
 export const CompanyTitle = styled.h1`
-    padding-left: 9.25rem;
+    padding-left: 9.15rem;
     margin: 0.25rem 0;
+    font-size: 1.85rem;
 
     @media (max-width: 1024px) {
-        padding-left: 8.25rem;     
+        padding-left: 8.15rem;
+        font-size: 1.65rem     
     }
 
     @media (max-width: 768px) {
-        padding-left: 6rem;
+        padding-left: 5.90rem;
+        font-size: 1.50rem;
     } 
+`;
+
+export const CategoryBox = styled.div`
+    display: flex;
+    padding: 0.8rem 1rem;
+    gap: 0.65rem;
+    flex-direction: row;
 `;

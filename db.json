@@ -1,0 +1,12 @@
+{
+    "categories": [
+      { "id": 1, "title": "TODOS" },
+      { "id": 2, "title": "🍔 HUMBÚRGUERES" },
+      { "id": 3, "title": "🍕 PIZZAS" },
+      { "id": 4, "title": "🌭 LANCHES" },
+      { "id": 4, "title": "🥤 BEBIDAS" },
+      { "id": 4, "title": "🍺  CERVEJAS" },
+      { "id": 4, "title": "🍷 VINHOS" },
+      { "id": 4, "title": "🍸  DRINKS" }
+    ]
+}
