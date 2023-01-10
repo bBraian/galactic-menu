@@ -65,7 +65,9 @@ export const CompanyTitle = styled.h1`
 
 export const CategoryBox = styled.div`
     display: flex;
-    padding: 0.8rem 1rem;
     gap: 0.65rem;
+    padding: 0.8rem 1rem;
+    overflow-y: hidden;
+    overflow-x: scroll;
     flex-direction: row;
 `;

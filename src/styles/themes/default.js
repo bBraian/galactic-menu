@@ -21,5 +21,6 @@ export const defaultTheme = {
     background: '#EEE',
     text: '#272221',
 
-    border: '#AEAEAE'
+    border: '#C4C4C4',
+    white: '#FFF',
   }

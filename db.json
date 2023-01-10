@@ -4,9 +4,13 @@
       { "id": 2, "title": "🍔 HUMBÚRGUERES" },
       { "id": 3, "title": "🍕 PIZZAS" },
       { "id": 4, "title": "🌭 LANCHES" },
-      { "id": 4, "title": "🥤 BEBIDAS" },
-      { "id": 4, "title": "🍺  CERVEJAS" },
-      { "id": 4, "title": "🍷 VINHOS" },
-      { "id": 4, "title": "🍸  DRINKS" }
+      { "id": 5, "title": "🍟 FRITAS" },
+      { "id": 6, "title": "🥗 PORÇÕES" },
+      { "id": 7, "title": "🥟 PASTEIS" },
+      { "id": 8, "title": "🥤 BEBIDAS" },
+      { "id": 9, "title": "🍺 CERVEJAS" },
+      { "id": 10, "title": "🍷 VINHOS" },
+      { "id": 11, "title": "🍸 DRINKS" },
+      { "id": 12, "title": "🧃 SUCOS" }
     ]
 }
