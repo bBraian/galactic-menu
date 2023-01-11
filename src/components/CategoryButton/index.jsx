@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-export function CategoryButton({ title, ...rest }) {
+export function CategoryButton({ title, active, ...rest }) {
     return (
-        <Container {...rest}>
+        <Container {...rest} active={active}>
             {title}
         </Container>
     )

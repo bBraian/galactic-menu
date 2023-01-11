@@ -1,5 +1,14 @@
 {
     "categories": [
+      { "id": 1, "title": "Todos" },
+      { "id": 2, "title": "🍔 Hambúrgueres" },
+      { "id": 3, "title": "🍕 Pizzas" },
+      { "id": 4, "title": "🌭 Lanches" },
+      { "id": 5, "title": "🍟 Fritas" },
+      { "id": 6, "title": "🥗 Porções" },
+      { "id": 7, "title": "🥟 Pasteis" }
+    ],
+    "categoriess": [
       { "id": 1, "title": "TODOS" },
       { "id": 2, "title": "🍔 HUMBÚRGUERES" },
       { "id": 3, "title": "🍕 PIZZAS" },

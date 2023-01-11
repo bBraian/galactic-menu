@@ -66,8 +66,32 @@ export const CompanyTitle = styled.h1`
 export const CategoryBox = styled.div`
     display: flex;
     gap: 0.65rem;
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 1rem 0.65rem 1rem;
     overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
     flex-direction: row;
+`;
+
+export const FoodList = styled.div`
+    padding: 0 1rem;
+`;
+
+export const CategoryTitle = styled.h2`
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+`;
+export const ProductCategoryBox = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    gap: 20px;
+
+    @media (max-width: 1024px) {  
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    } 
 `;

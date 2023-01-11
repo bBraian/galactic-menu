@@ -23,4 +23,5 @@ export const defaultTheme = {
 
     border: '#C4C4C4',
     white: '#FFF',
+    bar: '#db8e44'
   }
