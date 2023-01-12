@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled.div`
     display: flex;
     border: 1px solid ${props => props.theme['border']};
     flex-direction: row;
     border-radius: 16px;
+    width: 100%;
 `;
 
 export const Image = styled.img`
@@ -31,6 +32,7 @@ export const Content = styled.div`
     justify-content: space-between;
     height: 100%;
     padding: 12px;
+    flex: 1;
 `;
 
 export const ProductInfos = styled.div`

@@ -1,21 +1,35 @@
 import { useEffect, useState } from "react";
 import { CategoryButton } from "../../components/CategoryButton";
-import { CategoryBox, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, Container, FoodList, ProductCategoryBox } from "./styles";
+import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, Container, FoodList, ProductCategoryBox } from "./styles";
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
 
 export function Home() {
     const [foodCategory, setFoodCategory] = useState([]);
-    const [categorySelected, setCategorySelected] = useState(1);
+    const [categorySelected, setCategorySelected] = useState(0);
+
+    const [productList, setProductList] = useState([])
+    const [filteredProductList, setFilteredProductList] = useState([])
 
     useEffect(() => {
         getFoodCategory();
+        getProductList();
     }, [])
+
+    useEffect(() => {
+        if(categorySelected !== 0) {
+            setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
+        }
+    }, [categorySelected])
     
     async function getFoodCategory() {
         const res = await api.get('categories');
-        
         setFoodCategory(res.data);
+    }
+
+    async function getProductList() {
+        const res = await api.get('products');
+        setProductList(res.data);
     }
 
     return (
@@ -32,7 +46,8 @@ export function Home() {
                         <CategoryButton
                             active={categorySelected === category.id ? true : false}
                             key={category.id}
-                            title={category.title}
+                            data={category}
+                            setCategorySelected={setCategorySelected}
                         />
                     )
                 })}
@@ -40,12 +55,43 @@ export function Home() {
             </CategoryBox>
 
             <FoodList>
-                <CategoryTitle>🍔 Hamburgueres</CategoryTitle>
-                <ProductCategoryBox>
-                    <Product />
-                    <Product />
-                    <Product />
-                </ProductCategoryBox>
+                {categorySelected !== 0 ? (
+                    <>
+                    { filteredProductList.map(product => {
+                        return (
+                            <CategoryDiv key={product.categoryId}>
+                                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
+                                <ProductCategoryBox>
+                                    {product.categoryProducts.map(prod => {
+                                        return (
+                                            <Product data={prod} />
+                                        )
+                                    })}
+                                </ProductCategoryBox>
+                            </CategoryDiv>
+                        )
+                    })}
+                    </>
+                ) : (
+                    <>
+                    { productList.map(product => {
+                        return (
+                            <CategoryDiv key={product.categoryId}>
+                                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
+                                <ProductCategoryBox>
+                                    {product.categoryProducts.map(prod => {
+                                        return (
+                                            <Product data={prod} />
+                                        )
+                                    })}
+                                </ProductCategoryBox>
+                            </CategoryDiv>
+                        )
+                    })}
+                    </>
+                )}
+ 
+   
             </FoodList>
         </Container>
     )

@@ -12,16 +12,16 @@ import {
     ButtonAddProduct
 } from "./styles";
 
-export function Product() {
+export function Product({data}) {
     return (
         <Container>
-            <Image src="https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg" />
+            <Image src={data.imageUrl} />
             <Content>
 
                 <ProductInfos>
                     <ProductText>
-                        <Title>Hamburguer 08</Title>
-                        <Description>Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita</Description>
+                        <Title>{data.title}</Title>
+                        <Description>{data.description}</Description>
                     </ProductText>
                     <Discount>- 20%</Discount>
                 </ProductInfos>
@@ -31,9 +31,7 @@ export function Product() {
                         <ProductPrice discount={false}>R$ 24,90</ProductPrice>
                         <ProductPrice discount={true}>R$ 28,00</ProductPrice>
                     </Price>
-                    <ButtonAddProduct>
-                        +
-                    </ButtonAddProduct>
+                    <ButtonAddProduct>+</ButtonAddProduct>
                 </ProductInfos>
             </Content>
         </Container>

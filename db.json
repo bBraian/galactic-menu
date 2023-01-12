@@ -1,13 +1,43 @@
 {
     "categories": [
-      { "id": 1, "title": "Todos" },
-      { "id": 2, "title": "🍔 Hambúrgueres" },
-      { "id": 3, "title": "🍕 Pizzas" },
-      { "id": 4, "title": "🌭 Lanches" },
-      { "id": 5, "title": "🍟 Fritas" },
-      { "id": 6, "title": "🥗 Porções" },
-      { "id": 7, "title": "🥟 Pasteis" }
+      { "id": 0, "title": "Todos" },
+      { "id": 1, "title": "🍔 Hambúrgueres" },
+      { "id": 2, "title": "🍕 Pizzas" },
+      { "id": 3, "title": "🌭 Lanches" },
+      { "id": 4, "title": "🍟 Fritas" },
+      { "id": 5, "title": "🥗 Porções" },
+      { "id": 6, "title": "🥟 Pasteis" }
     ],
+
+
+
+    "products": [
+      { "categoryId": 1, "categoryTitle": "🍔 Hambúrgueres", "categoryProducts": [
+        { "id": 1, "imageUrl": "https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg", "title": "Hamburguer 08", "description": "Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita", "price": [{"original": "28,00", "discounted": "24,90"}]},
+        { "id": 2, "imageUrl": "https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg", "title": "Hamburguer 08", "description": "Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita", "price": [{"original": "28,00", "discounted": "24,90"}]},
+        { "id": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg", "title": "Hamburguer 08", "description": "Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita", "price": [{"original": "28,00", "discounted": "24,90"}]}
+      ]},
+      { "categoryId": 2, "categoryTitle": "🍕 Pizzas", "categoryProducts": [
+        { "id": 4, "categoryId": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/p3.3494d5d3.jpg", "title": "Pizza de Chocolate", "description": "Pizza de chocolate preto com MM's", "price": [{"original": "30,00", "discounted": ""}]},
+        { "id": 5, "categoryId": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/p3.3494d5d3.jpg", "title": "Pizza de Chocolate", "description": "Pizza de chocolate preto com MM's", "price": [{"original": "30,00", "discounted": ""}]},
+        { "id": 6, "categoryId": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/p3.3494d5d3.jpg", "title": "Pizza de Chocolate", "description": "Pizza de chocolate preto com MM's", "price": [{"original": "30,00", "discounted": ""}]},
+        { "id": 7, "categoryId": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/p3.3494d5d3.jpg", "title": "Pizza de Chocolate", "description": "Pizza de chocolate preto com MM's", "price": [{"original": "30,00", "discounted": ""}]},
+        { "id": 8, "categoryId": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/p3.3494d5d3.jpg", "title": "Pizza de Chocolate", "description": "Pizza de chocolate preto com MM's", "price": [{"original": "30,00", "discounted": ""}]}
+      ]}
+    ],
+
+
+
+    "productsList": [
+      { "id": 1, "categoryId": 2, "imageUrl": "https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg", "title": "Hamburguer 08", "description": "Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita", "price": [{"original": "28,00", "discounted": "24,90"}]},
+      { "id": 2, "categoryId": 2, "imageUrl": "https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg", "title": "Hamburguer 08", "description": "Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita", "price": [{"original": "28,00", "discounted": "24,90"}]},
+      { "id": 3, "categoryId": 2, "imageUrl": "https://digital-menu-seven.vercel.app/assets/h6.1b08aa0b.jpg", "title": "Hamburguer 08", "description": "Pão, carne de hambúrguer, bacon, molho barbecue, queijo muçarela, alface, tomate, maionese e batata frita", "price": [{"original": "28,00", "discounted": "24,90"}]},
+      
+      { "id": 4, "categoryId": 3, "imageUrl": "https://digital-menu-seven.vercel.app/assets/p3.3494d5d3.jpg", "title": "Pizza de Chocolate", "description": "Pizza de chocolate preto com MM's", "price": [{"original": "30,00", "discounted": ""}]}
+    ],
+
+
+
     "categoriess": [
       { "id": 1, "title": "TODOS" },
       { "id": 2, "title": "🍔 HUMBÚRGUERES" },

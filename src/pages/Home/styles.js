@@ -76,8 +76,11 @@ export const FoodList = styled.div`
     padding: 0 1rem;
 `;
 
+export const CategoryDiv = styled.div``;
+
 export const CategoryTitle = styled.h2`
     font-size: 1.25rem;
+    margin: 0 8px;
     font-weight: 500;
     margin-top: 1.25rem;
     margin-bottom: 1rem;
