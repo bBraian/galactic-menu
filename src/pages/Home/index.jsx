@@ -64,7 +64,7 @@ export function Home() {
                                 <ProductCategoryBox>
                                     {product.categoryProducts.map(prod => {
                                         return (
-                                            <Product data={prod} />
+                                            <Product key={prod.id} data={prod} />
                                         )
                                     })}
                                 </ProductCategoryBox>
@@ -81,7 +81,7 @@ export function Home() {
                                 <ProductCategoryBox>
                                     {product.categoryProducts.map(prod => {
                                         return (
-                                            <Product data={prod} />
+                                            <Product key={prod.id} data={prod} />
                                         )
                                     })}
                                 </ProductCategoryBox>

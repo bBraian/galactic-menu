@@ -9,4 +9,8 @@ export const Container = styled.button`
     text-align: center;
     white-space: nowrap;
     font-size: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
