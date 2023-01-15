@@ -3,6 +3,23 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
+    position: relative;
+`;
+
+export const Header = styled.header`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
+export const HeaderFixed = styled.header`
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: ${props => props.theme['background']};
 `;
 
 export const CompanyBgImg = styled.img`
@@ -75,6 +92,16 @@ export const CategoryBox = styled.div`
 export const FoodList = styled.div`
     padding: 0 1rem;
     margin-bottom: 4rem;
+    margin-top: 16rem;
+
+
+    @media (max-width: 1024px) {
+        margin-top: 15rem;
+    }
+
+    @media (max-width: 768px) {
+        margin-top: 11.5rem;
+    } 
 `;
 
 export const CategoryDiv = styled.div``;
