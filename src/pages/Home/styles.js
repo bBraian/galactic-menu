@@ -80,10 +80,23 @@ export const CompanyTitle = styled.h1`
     } 
 `;
 
+export const CompanyTitleSm = styled.h1`
+    margin: 0.25rem 0;
+    font-size: 1.75rem;
+
+    @media (max-width: 1024px) {
+        font-size: 1.55rem     
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1.40rem;
+    } 
+`;
+
 export const CategoryBox = styled.div`
     display: flex;
     gap: 0.65rem;
-    padding: 0.8rem 1rem 0.65rem 1rem;
+    padding: ${props => props.paddingTop} 1rem 0.65rem 1rem;
     overflow-y: hidden;
     overflow-x: auto;
     flex-direction: row;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CategoryButton } from "../../components/CategoryButton";
-import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, Container, FoodList, Header, HeaderFixed, ProductCategoryBox } from "./styles";
+import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, Header, HeaderFixed, ProductCategoryBox } from "./styles";
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
 
@@ -18,7 +18,7 @@ export function Home() {
         getProductList();
 
         function scrollListner() {
-            if(window.scrollY > 120) {
+            if(window.scrollY > 100) {
               setHeader('fixed');
             } else {
               setHeader('normal');
@@ -59,7 +59,7 @@ export function Home() {
                         <CompanyTitle>Braia's Bar</CompanyTitle>
                     </CompanyInfos>
 
-                    <CategoryBox>
+                    <CategoryBox paddingTop="0.8rem">
                         {foodCategory.map(category => {
                             return (
                                 <CategoryButton
@@ -70,7 +70,6 @@ export function Home() {
                                 />
                             )
                         })}
-
                     </CategoryBox>
                 </Header>
                 ) 
@@ -78,11 +77,10 @@ export function Home() {
                 (
                 <HeaderFixed>
                     <CompanyInfos>
-                        <CompanyLogo src="https://d3lryrecr523dy.cloudfront.net/companies/logos/94689c97-dc07-4429-b634-0189bc84c128.webp" />
-                        <CompanyTitle>Braia's Bar</CompanyTitle>
+                        <CompanyTitleSm>Braia's Bar</CompanyTitleSm>
                     </CompanyInfos>
 
-                    <CategoryBox>
+                    <CategoryBox paddingTop={0}>
                         {foodCategory.map(category => {
                             return (
                                 <CategoryButton
@@ -98,9 +96,6 @@ export function Home() {
                 </HeaderFixed>
                 )
             }
-
-
-
 
             <FoodList>
                 {categorySelected !== 0 ? (
