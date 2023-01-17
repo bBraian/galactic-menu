@@ -1,9 +1,17 @@
-import { Container } from "./styles";
+import { Container, LoginButton, LoginContainer, PasswordInput, UsernameInput } from "./styles";
 
 export function Login() {
     return (
         <Container>
-            login
+            <LoginContainer>
+                <UsernameInput type="text" placeholder="Usuário" />
+                <PasswordInput type="password" placeholder="Senha" />
+
+                <LoginButton>
+                    Logar
+                </LoginButton>
+
+            </LoginContainer>
         </Container>
     )
 }
