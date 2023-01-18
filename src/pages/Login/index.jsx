@@ -1,15 +1,28 @@
-import { Container, LoginButton, LoginContainer, PasswordInput, UsernameInput } from "./styles";
+import { Box, Container, ForgotPassword, LoginButton, LoginContainer, Logo, PasswordInput, Title, UsernameInput } from "./styles";
+
+import logo from "../../assets/images/menu_digital.png";
 
 export function Login() {
     return (
         <Container>
             <LoginContainer>
+                <Box>
+                    <Logo src={logo} />    
+                    <Title>Fazer login</Title>
+                </Box>
+
                 <UsernameInput type="text" placeholder="Usuário" />
                 <PasswordInput type="password" placeholder="Senha" />
+               
+                <ForgotPassword>
+                    Esqueceu a senha?
+                </ForgotPassword>
 
-                <LoginButton>
-                    Logar
+                <LoginButton to="/admin">
+                    Entrar
                 </LoginButton>
+
+             
 
             </LoginContainer>
         </Container>
