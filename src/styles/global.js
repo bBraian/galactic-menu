@@ -14,8 +14,9 @@ export const GlobalStyle = createGlobalStyle`
         background: ${props => props.theme['background']};
         color: ${props => props.theme['text']};
         -webkit-font-smoothing: antialiased;
-        max-width: 1160px;
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     body, input, textarea, button {
         font-family: 'Roboto', sans-serif;

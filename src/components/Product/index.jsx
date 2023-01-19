@@ -12,6 +12,8 @@ import {
     ProductPrice,
     ButtonAddProduct
 } from "./styles";
+import * as Dialog from '@radix-ui/react-dialog';
+import { AddToCartDialog } from "../AddToCartDialog";
 
 export function Product({data}) {
     const [discount, setDiscount] = useState(false);
@@ -29,35 +31,40 @@ export function Product({data}) {
     }
     
     return (
-        <Container>
-            <Image src={data.imageUrl} />
-            <Content>
+        <Dialog.Root>
+            <Dialog.Trigger asChild >
+                <Container>
+                    <Image src={data.imageUrl} />
+                    <Content>
 
-                <ProductInfos>
-                    <ProductText>
-                        <Title>{data.title}</Title>
-                        <Description>{data.description}</Description>
-                    </ProductText>
-                    {discount && <Discount>- {discount}%</Discount> }
-                </ProductInfos>
+                        <ProductInfos>
+                            <ProductText>
+                                <Title>{data.title}</Title>
+                                <Description>{data.description}</Description>
+                            </ProductText>
+                            {discount && <Discount>- {discount}%</Discount> }
+                        </ProductInfos>
 
-                <ProductInfos>
-                    {data.price.discounted === "" ? 
-                        (
-                            <Price>
-                                <ProductPrice>R$ {data.price.original}</ProductPrice>
-                            </Price>
-                        ) : 
-                        (
-                            <Price>
-                                <ProductPrice>R$ {data.price.discounted}</ProductPrice>
-                                <ProductPrice discount={true}>R$ {data.price.original}</ProductPrice>
-                            </Price>
-                        ) 
-                    }
-                    <ButtonAddProduct>+</ButtonAddProduct>
-                </ProductInfos>
-            </Content>
-        </Container>
+                        <ProductInfos>
+                            {data.price.discounted === "" ? 
+                                (
+                                    <Price>
+                                        <ProductPrice>R$ {data.price.original}</ProductPrice>
+                                    </Price>
+                                ) : 
+                                (
+                                    <Price>
+                                        <ProductPrice>R$ {data.price.discounted}</ProductPrice>
+                                        <ProductPrice discount={true}>R$ {data.price.original}</ProductPrice>
+                                    </Price>
+                                ) 
+                            }
+                            <ButtonAddProduct>+</ButtonAddProduct>
+                        </ProductInfos>
+                    </Content>
+                </Container>
+            </Dialog.Trigger>
+            <AddToCartDialog />
+        </Dialog.Root>
     )
 }

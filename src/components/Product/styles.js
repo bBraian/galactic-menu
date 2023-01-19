@@ -6,6 +6,12 @@ export const Container = styled.div`
     flex-direction: row;
     border-radius: 16px;
     width: 100%;
+    cursor: pointer;
+    transition: transform ease-in-out 0.1s;
+
+    &:hover {
+        transform: scale(1.02);
+    }
 `;
 
 export const Image = styled.img`

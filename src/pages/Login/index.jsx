@@ -1,6 +1,6 @@
 import { Box, Container, ForgotPassword, LoginButton, LoginContainer, Logo, PasswordInput, Title, UsernameInput } from "./styles";
 
-import logo from "../../assets/images/menu_digital.png";
+import logo from "../../assets/galaxy.svg";
 
 export function Login() {
     return (

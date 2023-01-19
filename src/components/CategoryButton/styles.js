@@ -9,8 +9,10 @@ export const Container = styled.button`
     text-align: center;
     white-space: nowrap;
     font-size: 1rem;
+    cursor: pointer;
+    transition: transform ease-in-out 0.1s;
 
     &:hover {
-        cursor: pointer;
+        transform: scale(1.05);
     }
 `;
