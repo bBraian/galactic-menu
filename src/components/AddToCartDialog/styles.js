@@ -6,6 +6,8 @@ export const Overlay = styled(Dialog.Overlay)`
     position: fixed;
     inset: 0;
     animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    
 `
 
 export const Container = styled(Dialog.Content)`
@@ -21,4 +23,8 @@ export const Container = styled(Dialog.Content)`
     max-height: 85vh;
     padding: 25px;
     animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:focus {
+        outline: none;
+    }
 `;

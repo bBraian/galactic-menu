@@ -5,6 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
     position: relative;
+    max-width: 1160px;
 `;
 
 export const Header = styled.header`

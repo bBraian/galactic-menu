@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { CategoryButton } from "../../components/CategoryButton";
-import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, Header, HeaderFixed, ProductCategoryBox } from "./styles";
+import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, Header, HeaderFixed, ProductCategoryBox, ScrollAreaScrollbar, ScrollAreaThumb } from "./styles";
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 export function Home() {
     const [header, setHeader] = useState('normal')
@@ -46,6 +47,7 @@ export function Home() {
         const res = await api.get('products');
         setProductList(res.data);
     }
+    const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
     return (
         <Container>
@@ -59,18 +61,29 @@ export function Home() {
                         <CompanyTitle>Braia's Bar</CompanyTitle>
                     </CompanyInfos>
 
-                    <CategoryBox paddingTop="0.8rem">
-                        {foodCategory.map(category => {
-                            return (
-                                <CategoryButton
-                                    active={categorySelected === category.id ? true : false}
-                                    key={category.id}
-                                    data={category}
-                                    setCategorySelected={setCategorySelected}
-                                />
-                            )
-                        })}
-                    </CategoryBox>
+                   
+                    <ScrollArea.Root>
+                        <ScrollArea.Viewport>
+                            <CategoryBox paddingTop="0.8rem">
+                                {foodCategory.map(category => {
+                                    return (
+                                        <CategoryButton
+                                            active={categorySelected === category.id ? true : false}
+                                            key={category.id}
+                                            data={category}
+                                            setCategorySelected={setCategorySelected}
+                                        />
+                                    )
+                                })}
+                            </CategoryBox>
+
+                        </ScrollArea.Viewport>
+                        <ScrollAreaScrollbar orientation="horizontal">
+                            <ScrollAreaThumb />
+                        </ScrollAreaScrollbar>
+                        <ScrollArea.Corner />
+                    </ScrollArea.Root>
+
                 </Header>
                 ) 
                 : 
@@ -80,19 +93,27 @@ export function Home() {
                         <CompanyTitleSm>Braia's Bar</CompanyTitleSm>
                     </CompanyInfos>
 
-                    <CategoryBox paddingTop={0}>
-                        {foodCategory.map(category => {
-                            return (
-                                <CategoryButton
-                                    active={categorySelected === category.id ? true : false}
-                                    key={category.id}
-                                    data={category}
-                                    setCategorySelected={setCategorySelected}
-                                />
-                            )
-                        })}
+                    <ScrollArea.Root>
+                        <ScrollArea.Viewport>
+                            <CategoryBox paddingTop="0.8rem">
+                                {foodCategory.map(category => {
+                                    return (
+                                        <CategoryButton
+                                            active={categorySelected === category.id ? true : false}
+                                            key={category.id}
+                                            data={category}
+                                            setCategorySelected={setCategorySelected}
+                                        />
+                                    )
+                                })}
+                            </CategoryBox>
 
-                    </CategoryBox>
+                        </ScrollArea.Viewport>
+                        <ScrollAreaScrollbar orientation="horizontal">
+                            <ScrollAreaThumb />
+                        </ScrollAreaScrollbar>
+                        <ScrollArea.Corner />
+                    </ScrollArea.Root>
                 </HeaderFixed>
                 )
             }

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
+    z-index: 99999;
     border: 2px solid ${props => (props.active ? props.theme['bar'] : props.theme['border'])};;
     background-color: ${props => (props.active ? props.theme['bar'] : props.theme['background'])};
     color: ${props => (props.active ? props.theme['white'] : props.theme['gray-900'])};;
