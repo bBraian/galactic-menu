@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
     position: relative;
+    width: 100%;
     max-width: 1160px;
 `;
 
@@ -16,11 +17,27 @@ export const Header = styled.header`
 `;
 
 export const HeaderFixed = styled.header`
+    left: 0;
     position: fixed;
+    z-index: 9;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    width: 100vw;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
     background-color: ${props => props.theme['background']};
+`;
+
+export const HeaderFixedBox = styled.div`
+    width: 100%;
+    max-width: 1785px;
+    
+    @media (max-width: 1264px) {
+        max-width: 1185px;
+    }
+    @media (max-width: 960px) {
+        max-width: 900px;
+    }
 `;
 
 export const CompanyBgImg = styled.img`
@@ -92,6 +109,35 @@ export const CompanyTitleSm = styled.h1`
     @media (max-width: 768px) {
         font-size: 1.40rem;
     } 
+`;
+
+export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
+    display: flex;
+    user-select: none;
+    touch-action: none;
+    margin: 0 1rem;
+    padding: 2px 0;
+    flex-direction: column;
+    height: 10px;
+`;
+
+export const ScrollAreaThumb = styled(ScrollArea.ScrollAreaThumb)`
+    flex: 1;
+    background: #C4C4C4;
+    border-radius: 100px;
+    position: relative;
+  
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        min-width: 44px;
+        min-height: 44px;
+    }
 `;
 
 export const CategoryBox = styled.div`

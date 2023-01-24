@@ -8,6 +8,8 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 4rem 1.25rem;
+    background: rgb(136,60,181);
+    background: linear-gradient(270deg, rgba(136,60,181,1) 0%, rgba(117,129,194,1) 100%);
 `;
 
 export const LoginContainer = styled.div`
@@ -30,13 +32,14 @@ export const Box = styled.div`
 
 export const Title = styled.h2`
     font-size: 1.625rem;
+    margin-top: 1rem;
     text-align: center;
     color: ${props => props.theme['text']};
 `;
 
 export const Logo = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     object-fit: contain;
 `;
 
@@ -71,8 +74,8 @@ export const ForgotPassword = styled.p`
 
 export const LoginButton = styled(Link)`
     height: 54px;
-    border: 1px solid #db8e44;
-    background-color: #db8e44;
+    border: 1px solid #71499A;
+    background-color: #71499A;
     color: #FFF;
     border-radius: 12px;
     padding: 0.75rem;
