@@ -22,10 +22,25 @@ export const Container = styled(Dialog.Content)`
     width: 90vw;
     max-width: 450px;
     max-height: 85vh;
-    padding: 25px;
+    overflow: hidden;
     animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
     &:focus {
         outline: none;
     }
+`;
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+`;
+
+export const Image = styled.img`
+    width: 300px;
+    height: 300px;
+`;
+
+export const ContentBox = styled.div`
+
 `;
