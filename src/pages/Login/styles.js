@@ -8,11 +8,11 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 4rem 1.25rem;
-    background: rgb(136,60,181);
-    background: linear-gradient(270deg, rgba(136,60,181,1) 0%, rgba(117,129,194,1) 100%);
+    background: linear-gradient(0deg,rgb(0 8 98) 0%,rgb(165 45 255) 100%);
 `;
 
 export const LoginContainer = styled.div`
+    z-index: 999;
     display: flex;
     flex-direction: column;
     padding: 40px 32px;
@@ -20,6 +20,9 @@ export const LoginContainer = styled.div`
     background-color: #fff;
     width: -webkit-fill-available;
     max-width: 450px;
+    -webkit-box-shadow: 4px 39px 40px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 4px 39px 40px 0px rgba(0,0,0,0.5);
+    box-shadow: 4px 39px 40px 0px rgba(0,0,0,0.5);
 `;
 
 export const Box = styled.div`
@@ -66,6 +69,7 @@ export const PasswordInput = styled.input`
 `;
 
 export const ForgotPassword = styled.p`
+    cursor: pointer;
     color: #adafca;
     font-size: 0.875rem;
     font-weight: 700;
@@ -74,8 +78,8 @@ export const ForgotPassword = styled.p`
 
 export const LoginButton = styled(Link)`
     height: 54px;
-    border: 1px solid #71499A;
-    background-color: #71499A;
+    border: 1px solid #9329EE;
+    background-color: #9329EE;
     color: #FFF;
     border-radius: 12px;
     padding: 0.75rem;

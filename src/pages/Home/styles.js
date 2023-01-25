@@ -19,7 +19,7 @@ export const Header = styled.header`
 export const HeaderFixed = styled.header`
     left: 0;
     position: fixed;
-    z-index: 9;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
