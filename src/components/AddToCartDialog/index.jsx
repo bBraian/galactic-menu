@@ -1,7 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { CloseButton, Container, Content, ContentBox, Footer, Header, Image, Overlay, ProductTitle, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea } from './styles';
+import { AddToCartButton, CloseButton, Container, Content, ContentBox, Description, Footer, Header, Image, Overlay, Price, ProductTitle, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
 import { IoCloseSharp } from 'react-icons/io5';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+import { IncrementableButton } from '../IncrementableButton';
+import { Discount, ProductPrice } from '../Product/styles';
 
 export function AddToCartDialog() {
     return (
@@ -17,16 +19,32 @@ export function AddToCartDialog() {
                                 <IoCloseSharp />
                             </CloseButton>
                         </Header>
+
                         <ScrolableContent>
                             <ScrollSafeArea>
-                                <p>oi</p><br />
+
+                                <Description>Dry tomatoes and Burrata</Description>
+                                <Price>
+                                    <ProductPrice>R$ 21,90</ProductPrice>
+                                    <ProductPrice discount={true}>R$ 24,00</ProductPrice>
+                                    <Discount>- 20%</Discount>
+                                </Price>
+                                <Separator />
+
                             </ScrollSafeArea>
                             <ScrollAreaScrollbar orientation="vertical">
                                 <ScrollAreaThumb />
                             </ScrollAreaScrollbar>
                             <ScrollArea.Corner />
                         </ScrolableContent>
-                        <Footer></Footer>
+
+                        <Footer>
+                            <IncrementableButton />
+
+                            <AddToCartButton>
+                                Adicionar
+                            </AddToCartButton>
+                        </Footer>
    
                     </ContentBox>
                 </Content>

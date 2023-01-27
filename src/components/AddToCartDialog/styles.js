@@ -13,7 +13,7 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const Container = styled(Dialog.Content)`
     z-index: 99;
-    background-color: white;
+    background-color: #fff;
     border-radius: 16px;
     box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
     position: fixed;
@@ -58,21 +58,26 @@ export const Header = styled.header`
 `;
 
 export const ProductTitle = styled.h2`
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     font-weight: 700;
 `;
 
 export const CloseButton = styled(Dialog.Close)`
     border: 0;
-    background: #F5544D;
-    width: 20px;
-    height: 20px;
+    background-color: #F5544D;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #811D18;
     cursor: pointer;
+    transition: ease-in-out 0.1s;
+
+    &:hover {
+        color: #fff;
+    }
 `;
 
 export const ScrolableContent = styled(ScrollArea.Root)`
@@ -80,6 +85,7 @@ export const ScrolableContent = styled(ScrollArea.Root)`
     overflow: hidden;
     --scrollbar-size: 10px;
     background-color: #F9F9F1;
+    padding: 14px;
 `;
 
 export const ScrollSafeArea = styled(ScrollArea.Viewport)`
@@ -128,4 +134,38 @@ export const Footer = styled.footer`
     padding: 0 10px;
     height: 60px;
     align-items: center;
+    background-color: #F9F9F1;
+`;
+
+export const AddToCartButton = styled.button`
+    background-color: #DB8E44;
+    border: 0;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 500;
+    height: 38px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background ease-in-out 0.1s;
+
+    &:hover {
+        background-color: rgb(244, 160, 80);
+    }
+`;
+
+export const Description = styled.p`
+
+`;
+
+export const Price = styled.div`
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+`;
+
+export const Separator = styled.hr`
+    border: solid;
+    border-width: thin 0 0;
+    border-color: rgba(0,0,0,.12);
+    margin: 12px 0;
 `;
