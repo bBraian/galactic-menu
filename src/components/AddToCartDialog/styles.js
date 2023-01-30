@@ -58,8 +58,8 @@ export const Header = styled.header`
 `;
 
 export const ProductTitle = styled.h2`
-    font-size: 1.45rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: bold;
 `;
 
 export const CloseButton = styled(Dialog.Close)`
@@ -154,7 +154,8 @@ export const AddToCartButton = styled.button`
 `;
 
 export const Description = styled.p`
-
+    margin-bottom: 12px;
+    font-size: 0.75rem;
 `;
 
 export const Price = styled.div`
