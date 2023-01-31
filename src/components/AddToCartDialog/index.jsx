@@ -29,6 +29,8 @@ export function AddToCartDialog() {
                                     <ProductPrice discount={true}>R$ 24,00</ProductPrice>
                                     <Discount>- 20%</Discount>
                                 </Price>
+
+
                                 <Separator />
 
                             </ScrollSafeArea>
