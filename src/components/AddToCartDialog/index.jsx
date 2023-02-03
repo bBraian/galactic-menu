@@ -1,20 +1,21 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { AddToCartButton, CloseButton, Container, Content, ContentBox, Description, Footer, Header, Image, Overlay, Price, ProductTitle, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
+import { AddToCartButton, CloseButton, Container, Content, ContentBox, Description, Footer, Header, Image, OptionBox, OptionDescription, OptionList, OptionRequired, OptionTitle, Overlay, Price, ProductTitle, Row, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
 import { IoCloseSharp } from 'react-icons/io5';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { IncrementableButton } from '../IncrementableButton';
 import { Discount, ProductPrice } from '../Product/styles';
+import { OptionCard } from '../OptionCard';
 
-export function AddToCartDialog() {
+export function AddToCartDialog({data}) {
     return (
         <Dialog.Portal>
             <Overlay />
             <Container>
                 <Content>
-                    <Image src="https://qlickmenu.s3-us-west-1.amazonaws.com/companies/products/93cde489-c265-43bd-b5cc-88ceb00eec51.jpg" />
+                    <Image src={data.imageUrl} />
                     <ContentBox>
                         <Header>
-                            <ProductTitle>Pizza de Frango</ProductTitle>
+                            <ProductTitle>{data.title}</ProductTitle>
                             <CloseButton>
                                 <IoCloseSharp />
                             </CloseButton>
@@ -23,15 +24,41 @@ export function AddToCartDialog() {
                         <ScrolableContent>
                             <ScrollSafeArea>
 
-                                <Description>Dry tomatoes and Burrata</Description>
-                                <Price>
-                                    <ProductPrice>R$ 21,90</ProductPrice>
-                                    <ProductPrice discount={true}>R$ 24,00</ProductPrice>
-                                    <Discount>- 20%</Discount>
-                                </Price>
+                                <Description>{data.description}</Description>
+                                { data.price.discounted === "" ? 
+                                    (
+                                        <Price>
+                                            <ProductPrice>R$ {data.price.original}</ProductPrice>
+                                        </Price>
+                                    ) : 
+                                    (
+                                        <Price>
+                                            <ProductPrice>R$ {data.price.discounted}</ProductPrice>
+                                            <ProductPrice discount={true}>R$ {data.price.original}</ProductPrice>
+                                            <Discount>- {data.discount}%</Discount>
+                                        </Price>
+                                    ) 
+                                }
 
-
-                                <Separator />
+                                <OptionBox>
+                                    <Separator />
+                                    <Row>
+                                        <OptionTitle>Tamanho</OptionTitle>
+                                        <OptionRequired>Opcional</OptionRequired>
+                                    </Row>
+                                    <OptionDescription>Selecione o tamanho</OptionDescription>
+                                    <OptionList>
+                                        <OptionCard />
+                                        <OptionCard />
+                                        <OptionCard />
+                                        <OptionCard />
+                                        <OptionCard />
+                                        <OptionCard />
+                                        <OptionCard />
+                                        <OptionCard />
+                                    </OptionList>
+                                </OptionBox>
+                              
 
                             </ScrollSafeArea>
                             <ScrollAreaScrollbar orientation="vertical">

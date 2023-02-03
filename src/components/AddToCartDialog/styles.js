@@ -38,7 +38,8 @@ export const Content = styled.div`
 
 export const Image = styled.img`
     width: 500px;
-    height: 100%;
+    height: 500px;
+    object-fit: cover;
 `;
 
 export const ContentBox = styled.div`
@@ -169,4 +170,45 @@ export const Separator = styled.hr`
     border-width: thin 0 0;
     border-color: rgba(0,0,0,.12);
     margin: 12px 0;
+`;
+
+export const OptionBox = styled.div`
+`;
+
+export const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const OptionTitle = styled.h2`
+    font-weight: 500;
+    font-size: 1rem;
+`;
+
+export const OptionRequired = styled.div`
+    background-color: ${props => props.theme['yellow-500']};
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    padding: 4px 12px;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: ${props => props.theme['white']};
+`;
+
+export const OptionDescription = styled.p`
+    margin-top: 12px;
+    font-size: 0.875rem;
+`;
+
+export const OptionList = styled.div`
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
 `;
