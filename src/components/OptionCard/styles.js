@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Checkbox from '@radix-ui/react-checkbox';
 
 export const Container = styled.div`
     border-radius: 12px;
@@ -8,12 +9,41 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const Checkbox = styled.div``; 
+export const CheckboxRoot = styled(Checkbox.Root)`
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    border: 1px solid ${props => props.theme['border']};
+    background-color: #f9f9f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
 
-export const Box = styled.div`
-    margin-left: 8px;
+    &:hover {
+        background-color: #f1f1f1;
+    }
 `; 
 
-export const Title = styled.div``; 
+export const CheckboxIndicator = styled(Checkbox.Indicator )`
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`; 
 
-export const Price = styled.div``;
+export const Box = styled.label`
+    margin-left: 10px;
+    cursor: pointer;
+`; 
+
+export const Title = styled.h2`
+    font-size: 1rem;
+    font-weight: 400;
+`; 
+
+export const Price = styled.p`
+    font-size: 0.80rem;
+    font-weight: 400;
+`;

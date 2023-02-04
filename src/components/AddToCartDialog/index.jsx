@@ -1,12 +1,27 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { AddToCartButton, CloseButton, Container, Content, ContentBox, Description, Footer, Header, Image, OptionBox, OptionDescription, OptionList, OptionRequired, OptionTitle, Overlay, Price, ProductTitle, Row, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
+import { AddToCartButton, CloseButton, Comments, CommentsInput, Container, Content, ContentBox, Description, Footer, Header, Image, OptionBox, OptionDescription, OptionList, OptionRequired, OptionTitle, Overlay, Price, ProductTitle, Row, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
+import { useEffect, useState } from 'react';
+
 import { IoCloseSharp } from 'react-icons/io5';
+import * as Dialog from '@radix-ui/react-dialog';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+
 import { IncrementableButton } from '../IncrementableButton';
 import { Discount, ProductPrice } from '../Product/styles';
 import { OptionCard } from '../OptionCard';
+import { api } from '../../lib/axios';
 
 export function AddToCartDialog({data}) {
+    const [options, setOptions] = useState([]);
+
+    useEffect(() => {
+        getOptions(data.categoryId);
+    }, [])
+
+    async function getOptions(categoryId) {
+        const res = await api.get('options?categoryId='+categoryId);
+        setOptions(res.data);
+    }
+    
     return (
         <Dialog.Portal>
             <Overlay />
@@ -40,24 +55,33 @@ export function AddToCartDialog({data}) {
                                     ) 
                                 }
 
-                                <OptionBox>
-                                    <Separator />
-                                    <Row>
-                                        <OptionTitle>Tamanho</OptionTitle>
-                                        <OptionRequired>Opcional</OptionRequired>
-                                    </Row>
-                                    <OptionDescription>Selecione o tamanho</OptionDescription>
-                                    <OptionList>
-                                        <OptionCard />
-                                        <OptionCard />
-                                        <OptionCard />
-                                        <OptionCard />
-                                        <OptionCard />
-                                        <OptionCard />
-                                        <OptionCard />
-                                        <OptionCard />
-                                    </OptionList>
-                                </OptionBox>
+                                {options.map(opt => {
+                                    return (
+                                        <OptionBox key={opt.id}>
+                                            <Separator />
+                                            <Row>
+                                                <OptionTitle>{opt.title}</OptionTitle>
+                                                <OptionRequired>
+                                                    {opt.required ? "Obrigatório" : "Opcional"}
+                                                </OptionRequired>
+                                            </Row>
+                                            <OptionDescription>{opt.description}</OptionDescription>
+                                            <OptionList>
+                                                {opt.optionsList.map(item => {
+                                                    return (
+                                                        <OptionCard data={item} key={item.id} />
+                                                    )
+                                                })}
+                                            </OptionList>
+                                        </OptionBox>
+                                    )
+                                })}
+
+                                <Separator />
+
+                                <Comments>Observações</Comments>
+
+                                <CommentsInput placeholder='(opcional)' rows={2} />
                               
 
                             </ScrollSafeArea>

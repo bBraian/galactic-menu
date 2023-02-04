@@ -34,18 +34,31 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     flex: 1;
+
+    @media (max-width: 1080px) {
+        flex-direction: column;
+    }
 `;
 
 export const Image = styled.img`
     width: 500px;
     height: 500px;
     object-fit: cover;
+
+    @media (max-width: 1080px) {
+        width: 600px;
+        height: 350px;
+    }
 `;
 
 export const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     width: 500px;
+
+    @media (max-width: 1080px) {
+        width: 600px;
+    }
 `;
 
 export const Header = styled.header`
@@ -169,7 +182,7 @@ export const Separator = styled.hr`
     border: solid;
     border-width: thin 0 0;
     border-color: rgba(0,0,0,.12);
-    margin: 12px 0;
+    margin: 14px 0;
 `;
 
 export const OptionBox = styled.div`
@@ -179,7 +192,7 @@ export const Row = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 `;
 
 export const OptionTitle = styled.h2`
@@ -202,7 +215,7 @@ export const OptionRequired = styled.div`
 `;
 
 export const OptionDescription = styled.p`
-    margin-top: 12px;
+    margin-top: 16px;
     font-size: 0.875rem;
 `;
 
@@ -210,5 +223,18 @@ export const OptionList = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    margin: 16px 0;
+`;
 
+export const Comments = styled.h2`
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 16px;
+`;
+
+export const CommentsInput = styled.textarea`
+    width: 100%;
+    border: 1px solid ${props => props.theme['border']};
+    border-radius: 12px;
+    padding: 8px 10px;
 `;
