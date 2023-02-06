@@ -2,20 +2,19 @@ import { Container, Box, Title, Price, CheckboxIndicator, CheckboxRoot } from '.
 import { IoCheckbox } from 'react-icons/io5';
 
 export function OptionCard({data, optionsSelected, setOptionsSelected}) {
+    
     function handleSetOptionsSelected(option) {
-        optionsSelected.forEach(opt => {
-            let exists = Object.values(optionsSelected).includes(option.id);
-            if(exists) {
-                
-            } else {
-
-            }
-        })
+        let exists = optionsSelected.some(opt => opt.id === option.id);
+        if(exists) {
+            setOptionsSelected(optionsSelected.filter(opt => opt.id !== option.id))
+        } else {
+            setOptionsSelected([...optionsSelected, option])
+        }
     }
 
     return (
         <Container>
-            <CheckboxRoot id={data.id}>
+            <CheckboxRoot id={data.id} onCheckedChange={() => handleSetOptionsSelected(data)}>
                 <CheckboxIndicator>
                     <IoCheckbox size={26} color="#FBA94C" />
                 </CheckboxIndicator>

@@ -26,8 +26,14 @@ export function AddToCartDialog({data}) {
         }
     }
 
-    function handleAddOption() {
+    function calculateOptionsSelectedPrice() {
+        let price = 0;
 
+        optionsSelected.forEach(opt => {
+            price += opt.price;
+        })
+
+        return price;
     }
 
     async function getOptions(categoryId) {
@@ -40,12 +46,17 @@ export function AddToCartDialog({data}) {
     }, [])
 
     useEffect(() => {
+        let currentPrice = 0
         if(data.price.discounted === "") {
-            setPrice(data.price.original * amount);
+            currentPrice = data.price.original * amount;
         } else {
-            setPrice(data.price.discounted * amount);
+            currentPrice = data.price.discounted * amount;
         }
-    }, [amount])
+
+        currentPrice += calculateOptionsSelectedPrice();
+
+        setPrice(currentPrice);
+    }, [amount, optionsSelected])
     
     return (
         <Dialog.Portal>
