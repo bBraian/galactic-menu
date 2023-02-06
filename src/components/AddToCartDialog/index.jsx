@@ -12,15 +12,40 @@ import { api } from '../../lib/axios';
 
 export function AddToCartDialog({data}) {
     const [options, setOptions] = useState([]);
+    const [optionsSelected, setOptionsSelected] = useState([]);
+    const [amount, setAmount] = useState(1);
+    const [price, setPrice] = useState('');
 
-    useEffect(() => {
-        getOptions(data.categoryId);
-    }, [])
+    function handleSetAmount(action) {
+        if(action === 'plus') {
+            setAmount(state => state + 1);
+        } else if(action === 'minus') {
+            if(amount !== 1) {
+                setAmount(state => state - 1);
+            }
+        }
+    }
+
+    function handleAddOption() {
+
+    }
 
     async function getOptions(categoryId) {
         const res = await api.get('options?categoryId='+categoryId);
         setOptions(res.data);
     }
+
+    useEffect(() => {
+        getOptions(data.categoryId);
+    }, [])
+
+    useEffect(() => {
+        if(data.price.discounted === "") {
+            setPrice(data.price.original * amount);
+        } else {
+            setPrice(data.price.discounted * amount);
+        }
+    }, [amount])
     
     return (
         <Dialog.Portal>
@@ -43,13 +68,28 @@ export function AddToCartDialog({data}) {
                                 { data.price.discounted === "" ? 
                                     (
                                         <Price>
-                                            <ProductPrice>R$ {data.price.original}</ProductPrice>
+                                            <ProductPrice>
+                                                {data.price.original.toLocaleString('pt-br', {
+                                                    style: 'currency',
+                                                    currency: 'BRL'
+                                                })}                
+                                            </ProductPrice>
                                         </Price>
                                     ) : 
                                     (
                                         <Price>
-                                            <ProductPrice>R$ {data.price.discounted}</ProductPrice>
-                                            <ProductPrice discount={true}>R$ {data.price.original}</ProductPrice>
+                                            <ProductPrice>
+                                                {data.price.discounted.toLocaleString('pt-br', {
+                                                    style: 'currency',
+                                                    currency: 'BRL'
+                                                })}                
+                                            </ProductPrice>
+                                            <ProductPrice discount={true}>
+                                                {data.price.original.toLocaleString('pt-br', {
+                                                    style: 'currency',
+                                                    currency: 'BRL'
+                                                })}                
+                                            </ProductPrice>
                                             <Discount>- {data.discount}%</Discount>
                                         </Price>
                                     ) 
@@ -69,7 +109,12 @@ export function AddToCartDialog({data}) {
                                             <OptionList>
                                                 {opt.optionsList.map(item => {
                                                     return (
-                                                        <OptionCard data={item} key={item.id} />
+                                                        <OptionCard 
+                                                            data={item} 
+                                                            key={item.id}
+                                                            optionsSelected={optionsSelected}
+                                                            setOptionsSelected={setOptionsSelected}
+                                                        />
                                                     )
                                                 })}
                                             </OptionList>
@@ -92,10 +137,16 @@ export function AddToCartDialog({data}) {
                         </ScrolableContent>
 
                         <Footer>
-                            <IncrementableButton />
+                            <IncrementableButton 
+                                amount={amount}
+                                setAmount={handleSetAmount}                            
+                            />
 
                             <AddToCartButton>
-                                Adicionar
+                                Adicionar {price.toLocaleString('pt-br', {
+                                    style: 'currency',
+                                    currency: 'BRL'
+                                })}
                             </AddToCartButton>
                         </Footer>
    

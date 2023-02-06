@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 export const Overlay = styled(Dialog.Overlay)`
-    background-color: rgba(0, 0, 0, 0.44);
+    background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
     inset: 0;
     animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -169,7 +169,7 @@ export const AddToCartButton = styled.button`
 
 export const Description = styled.p`
     margin-bottom: 12px;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
 `;
 
 export const Price = styled.div`
@@ -237,4 +237,5 @@ export const CommentsInput = styled.textarea`
     border: 1px solid ${props => props.theme['border']};
     border-radius: 12px;
     padding: 8px 10px;
+    resize: none;
 `;

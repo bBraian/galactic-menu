@@ -24,8 +24,8 @@ export function Product({data}) {
     }, [])
 
     function calculateDiscount() {
-        let originalPrice = parseFloat(data.price.original.replace(',', '.'));
-        let priceWithDiscount = parseFloat(data.price.discounted.replace(',', '.'));
+        let originalPrice = parseFloat(data.price.original);
+        let priceWithDiscount = parseFloat(data.price.discounted);
         let result = (100 - ((priceWithDiscount * 100) / originalPrice));
         setDiscount(result.toFixed(0));
     }
@@ -49,13 +49,28 @@ export function Product({data}) {
                             {data.price.discounted === "" ? 
                                 (
                                     <Price>
-                                        <ProductPrice>R$ {data.price.original}</ProductPrice>
+                                        <ProductPrice>
+                                            {data.price.original.toLocaleString('pt-br', {
+                                                style: 'currency',
+                                                currency: 'BRL'
+                                            })}                
+                                        </ProductPrice>
                                     </Price>
                                 ) : 
                                 (
                                     <Price>
-                                        <ProductPrice>R$ {data.price.discounted}</ProductPrice>
-                                        <ProductPrice discount={true}>R$ {data.price.original}</ProductPrice>
+                                        <ProductPrice>
+                                            {data.price.discounted.toLocaleString('pt-br', {
+                                                style: 'currency',
+                                                currency: 'BRL'
+                                            })}                
+                                        </ProductPrice>
+                                        <ProductPrice discount={true}>
+                                            {data.price.original.toLocaleString('pt-br', {
+                                                style: 'currency',
+                                                currency: 'BRL'
+                                            })}                
+                                        </ProductPrice>
                                     </Price>
                                 ) 
                             }

@@ -34,7 +34,7 @@ export const CheckboxIndicator = styled(Checkbox.Indicator )`
 `; 
 
 export const Box = styled.label`
-    margin-left: 10px;
+    padding-left: 10px;
     cursor: pointer;
 `; 
 
