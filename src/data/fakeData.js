@@ -39,3 +39,22 @@ export const products = [
       { "id": 15, "imageUrl": "https://img77.uenicdn.com/image/upload/v1616190843/business/bd5702a8-492f-4f41-bf80-d46b97087e87.jpg", "title": "Porção Fritas, Calabresa e Cheddar", "description": "Porção de batatas fritas, calabresa e queijo cheddar", "price": {"original": "28,00", "discounted": ""}}
     ]}
 ];
+
+export const options = [
+  { "id": 1, "categoryId": 1, "required": false, "title": "Adicionais", "description": "Selecione adicionais", "optionsList": [
+    { "id": 1, "title": "Carne", "price": 4.50 },
+    { "id": 2, "title": "Bacon", "price": 4 },
+    { "id": 3, "title": "Queijo cheddar", "price": 2 }
+  ]},
+  { "id": 2, "categoryId": 2, "required": true, "title": "Tamanho", "description": "Selecione o tamanho", "optionsList": [
+    { "id": 4, "title": "Meia", "price": 17.50 },
+    { "id": 5, "title": "Inteira", "price": 28 }
+  ]},
+  { "id": 3, "categoryId": 2, "required": false, "title": "Adicionais", "description": "Selecione adicionais", "optionsList": [
+    { "id": 6, "title": "Extra queijo", "price": 2 },
+    { "id": 7, "title": "Extra bacon", "price": 3.50 },
+    { "id": 8, "title": "Extra calabresa", "price": 2.50 },
+    { "id": 9, "title": "Extra cebola", "price": 1 },
+    { "id": 10, "title": "Extra palhas", "price": 1.50 }
+  ]}
+];
