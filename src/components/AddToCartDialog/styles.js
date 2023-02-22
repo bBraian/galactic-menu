@@ -62,7 +62,7 @@ export const Image = styled.img`
 
     @media (max-width: 768px) {
         width: 100vw;
-        height: calc(50% - 60px);
+        height: calc(50vh - 60px);
     }
 `;
 
@@ -76,6 +76,7 @@ export const ContentBox = styled.div`
     }
     @media (max-width: 768px) {
         width: 100vw;
+        height: 50vh;
     }
 `;
 
@@ -133,10 +134,6 @@ export const ScrollSafeArea = styled(ScrollArea.Viewport)`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-
-    @media (max-width: 768px) {
-        margin-bottom: 60px;
-    }
 `;
 
 export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
@@ -281,6 +278,7 @@ export const ProductTitleMobile = styled(ProductTitle)`
 
     @media (max-width: 768px) {
         display: block;
+        margin: 14px 0;
     }
 `;
 
