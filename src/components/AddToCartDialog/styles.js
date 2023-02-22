@@ -285,19 +285,19 @@ export const ProductTitleMobile = styled(ProductTitle)`
 
 export const CloseButtonMobile = styled(CloseButton)`
     display: none;
-    position: fixed;
-    z-index: 99999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 14px;
-    right: 14px;
-    width: 30px;
-    height: 30px;
-    padding: 7px 0;
-    color: white;
 
     @media (max-width: 768px) {
         display: block;
+        position: fixed;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 14px;
+        right: 14px;
+        width: 30px;
+        height: 30px;
+        padding: 7px 0;
+        color: white;
     }
 `;
