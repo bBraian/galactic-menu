@@ -8,7 +8,6 @@ export const Overlay = styled(Dialog.Overlay)`
     inset: 0;
     animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 9;
-    
 `
 
 export const Container = styled(Dialog.Content)`
@@ -28,6 +27,11 @@ export const Container = styled(Dialog.Content)`
     &:focus {
         outline: none;
     }
+        
+    @media (max-width: 768px) {
+        border-radius: 0;
+        max-height: 100%;
+    }
 `;
 
 export const Content = styled.div`
@@ -37,6 +41,12 @@ export const Content = styled.div`
 
     @media (max-width: 1080px) {
         flex-direction: column;
+    }
+    
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
     }
 `;
 
@@ -49,6 +59,11 @@ export const Image = styled.img`
         width: 600px;
         height: 350px;
     }
+
+    @media (max-width: 768px) {
+        width: 100vw;
+        height: calc(50% - 60px);
+    }
 `;
 
 export const ContentBox = styled.div`
@@ -58,6 +73,9 @@ export const ContentBox = styled.div`
 
     @media (max-width: 1080px) {
         width: 600px;
+    }
+    @media (max-width: 768px) {
+        width: 100vw;
     }
 `;
 
@@ -69,6 +87,10 @@ export const Header = styled.header`
     padding: 0 10px;
     height: 40px;
     align-items: center;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
 export const ProductTitle = styled.h2`
@@ -100,12 +122,21 @@ export const ScrolableContent = styled(ScrollArea.Root)`
     --scrollbar-size: 10px;
     background-color: #F9F9F1;
     padding: 14px;
+
+    @media (max-width: 768px) {
+        height: 50vh;
+        padding: 0 14px;
+    }
 `;
 
 export const ScrollSafeArea = styled(ScrollArea.Viewport)`
     width: 100%;
     height: 100%;
     border-radius: inherit;
+
+    @media (max-width: 768px) {
+        margin-bottom: 60px;
+    }
 `;
 
 export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
@@ -149,6 +180,11 @@ export const Footer = styled.footer`
     height: 60px;
     align-items: center;
     background-color: #F9F9F1;
+
+    @media (max-width: 768px) {
+        position: fixed;
+        bottom: 0;
+    }
 `;
 
 export const AddToCartButton = styled.button`
@@ -238,4 +274,31 @@ export const CommentsInput = styled.textarea`
     border-radius: 12px;
     padding: 8px 10px;
     resize: none;
+`;
+
+export const ProductTitleMobile = styled(ProductTitle)`
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+`;
+
+export const CloseButtonMobile = styled(CloseButton)`
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    padding: 7px 0;
+    color: white;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
 `;
