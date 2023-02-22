@@ -62,7 +62,8 @@ export const Image = styled.img`
 
     @media (max-width: 768px) {
         width: 100vw;
-        height: calc(50vh - 60px);
+        height: calc(50% - 60px);
+        object-fit: cover;
     }
 `;
 
