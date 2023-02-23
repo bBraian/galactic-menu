@@ -1,4 +1,4 @@
-import { AddToCartButton, CloseButton, Comments, CommentsInput, Container, Content, ContentBox, Description, Footer, Header, Image, OptionBox, OptionDescription, OptionList, OptionRequired, OptionTitle, Overlay, Price, ProductTitle, Row, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
+import { AddToCartButton, CloseButton, CloseButtonMobile, Comments, CommentsInput, Container, Content, ContentBox, Description, Footer, Header, Image, OptionBox, OptionDescription, OptionList, OptionRequired, OptionTitle, Overlay, Price, ProductTitle, ProductTitleMobile, Row, ScrolableContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollSafeArea, Separator } from './styles';
 import { useEffect, useState } from 'react';
 
 import { IoCloseSharp } from 'react-icons/io5';
@@ -72,9 +72,13 @@ export function AddToCartDialog({data}) {
                             </CloseButton>
                         </Header>
 
+                        <CloseButtonMobile>
+                            <IoCloseSharp />
+                        </CloseButtonMobile>
+
                         <ScrolableContent>
                             <ScrollSafeArea>
-
+                                <ProductTitleMobile>{data.title}</ProductTitleMobile>
                                 <Description>{data.description}</Description>
                                 { data.price.discounted === "" ? 
                                     (
@@ -163,7 +167,6 @@ export function AddToCartDialog({data}) {
    
                     </ContentBox>
                 </Content>
-                
             </Container>
         </Dialog.Portal>
     )
