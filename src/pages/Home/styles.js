@@ -186,3 +186,57 @@ export const ProductCategoryBox = styled.div`
         grid-template-columns: 1fr;
     } 
 `;
+
+export const GoToCartButton = styled.button`
+    position: fixed;
+    bottom: 24px;
+    max-width: 1160px;
+    width: 100%; 
+    height: 45px;
+    background-color: #db8e44;
+    border: 0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: all ease-in-out 0.2s;
+    
+    &:hover {
+        scale: 1.01;
+        opacity: 1;
+    }
+`;
+
+export const ItensAmount = styled.div`
+    width: 30px;
+    height: 30px;
+    background-color: #FBA94C;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1rem;
+`;
+
+export const SeeCart = styled.h2`
+    font-size: 1.25rem;
+    color: #fff;
+`;
+
+export const ItensTotalPrice = styled.div`
+    height: 30px;
+    padding: 0 12px;
+    background-color: #FBA94C;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1rem;
+`;
