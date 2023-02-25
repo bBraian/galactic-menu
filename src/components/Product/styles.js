@@ -99,8 +99,8 @@ export const ProductPrice = styled.span`
 `;
 
 export const ButtonAddProduct = styled.button`
-    height: 1.75rem;
-    width: 1.75rem;
+    height: 1.65rem;
+    width: 1.65rem;
     border-radius: 10px;
     border: 0;
     font-size: 1.25rem;

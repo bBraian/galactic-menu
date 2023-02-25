@@ -179,10 +179,10 @@ export const Footer = styled.footer`
     align-items: center;
     background-color: #F9F9F1;
 
-    /* @media (max-width: 768px) {
+    @media (max-width: 768px) {
         position: fixed;
         bottom: 0;
-    } */
+    }
 `;
 
 export const AddToCartButton = styled.button`

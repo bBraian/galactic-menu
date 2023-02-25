@@ -167,7 +167,6 @@ export function AddToCartDialog({data}) {
    
                     </ContentBox>
                 </Content>
-                
             </Container>
         </Dialog.Portal>
     )
