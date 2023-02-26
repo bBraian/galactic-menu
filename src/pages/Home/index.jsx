@@ -4,6 +4,8 @@ import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, Co
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+import companyLogo from "../../assets/images/companylogo.png";
+import companyBg from "../../assets/images/companybg.png";
 
 export function Home() {
     const [header, setHeader] = useState('normal')
@@ -54,10 +56,10 @@ export function Home() {
             {header === 'normal' ? 
                 (
                 <Header>
-                    <CompanyBgImg src="https://d3lryrecr523dy.cloudfront.net/companies/backgrounds/35c32a3f-0097-445d-a4d2-a65eb2fa46ad.webp" />
+                    <CompanyBgImg src={companyBg} />
                     <CompanyInfos>
-                        <CompanyLogo src="https://d3lryrecr523dy.cloudfront.net/companies/logos/94689c97-dc07-4429-b634-0189bc84c128.webp" />
-                        <CompanyTitle>Braia's Bar</CompanyTitle>
+                        <CompanyLogo src={companyLogo} />
+                        <CompanyTitle>Galaxy Menu</CompanyTitle>
                     </CompanyInfos>
 
                    
