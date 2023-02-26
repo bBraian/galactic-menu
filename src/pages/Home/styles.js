@@ -189,19 +189,33 @@ export const ProductCategoryBox = styled.div`
 
 export const GoToCartButton = styled.button`
     position: fixed;
+    background-color: transparent;
     bottom: 24px;
     max-width: 1160px;
     width: 100%; 
     height: 45px;
-    background-color: #db8e44;
     border: 0;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
     cursor: pointer;
-    opacity: 0.9;
+    transition: all ease-in-out 0.2s;
+`;
+
+export const GoToCartButtonContent = styled.button`
+    display: flex;
+    flex: 1;
+    height: 45px;
+    background-color: #db8e44;
+    border: 0;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    opacity: 0.95;
     transition: all ease-in-out 0.2s;
     
     &:hover {
