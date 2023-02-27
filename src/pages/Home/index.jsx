@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CategoryButton } from "../../components/CategoryButton";
-import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, GoToCartButton, Header, HeaderFixed, HeaderFixedBox, ItensAmount, ItensTotalPrice, ProductCategoryBox, ScrollAreaScrollbar, ScrollAreaThumb, SeeCart } from "./styles";
+import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, GoToCartButton, GoToCartButtonContent, Header, HeaderFixed, HeaderFixedBox, ItensAmount, ItensTotalPrice, ProductCategoryBox, ScrollAreaScrollbar, ScrollAreaThumb, SeeCart } from "./styles";
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
@@ -160,15 +160,17 @@ export function Home() {
             </FoodList>
 
             <GoToCartButton>
-                <ItensAmount>
-                    2
-                </ItensAmount>
-                <SeeCart>
-                    Ver carrinho
-                </SeeCart>
-                <ItensTotalPrice>
-                    R$ 25,00
-                </ItensTotalPrice>
+                <GoToCartButtonContent>
+                    <ItensAmount>
+                        2
+                    </ItensAmount>
+                    <SeeCart>
+                        Ver carrinho
+                    </SeeCart>
+                    <ItensTotalPrice>
+                        R$ 25,00
+                    </ItensTotalPrice>
+                </GoToCartButtonContent>
             </GoToCartButton>        
         </Container>
     )

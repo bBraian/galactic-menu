@@ -187,19 +187,31 @@ export const ProductCategoryBox = styled.div`
     } 
 `;
 
+export const GoToCartButtonContent = styled.button`
+    display: flex;
+    height: 45px;
+    flex: 1;
+    background-color: #db8e44;
+    margin: 0 1rem;
+    padding: 0 2rem;
+    border: 0;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 16px;
+`;
+
+
 export const GoToCartButton = styled.button`
     position: fixed;
     bottom: 24px;
     max-width: 1160px;
     width: 100%; 
     height: 45px;
-    background-color: #db8e44;
     border: 0;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
     cursor: pointer;
     opacity: 0.9;
     transition: all ease-in-out 0.2s;
