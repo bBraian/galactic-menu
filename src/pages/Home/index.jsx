@@ -162,7 +162,7 @@ export function Home() {
             </FoodList>
 
             <GoToCartButton>
-                <GoToCartButtonContent>
+                <GoToCartButtonContent to="/cart">
                     <ItensAmount>
                         2
                     </ItensAmount>

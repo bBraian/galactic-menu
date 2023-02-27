@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     display: flex;
@@ -187,10 +188,10 @@ export const ProductCategoryBox = styled.div`
     } 
 `;
 
-export const GoToCartButton = styled.button`
+export const GoToCartButton = styled.div`
     position: fixed;
     background-color: transparent;
-    bottom: 24px;
+    bottom: 18px;
     max-width: 1160px;
     width: 100%; 
     height: 45px;
@@ -203,7 +204,8 @@ export const GoToCartButton = styled.button`
     transition: all ease-in-out 0.2s;
 `;
 
-export const GoToCartButtonContent = styled.button`
+export const GoToCartButtonContent = styled(Link)`
+    text-decoration: none;
     display: flex;
     flex: 1;
     height: 45px;

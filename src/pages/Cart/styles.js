@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -9,8 +10,9 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-    height: 60px;
+    height: 70px;
     width: 100%;
+    gap: 16px;
     padding: 0 1rem;
     position: absolute;
     display: flex;
@@ -19,7 +21,8 @@ export const Header = styled.header`
     justify-content: space-between;
 `;
 
-export const BackHomeButton = styled.button`
+export const BackHomeButton = styled(Link)`
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -40,6 +43,7 @@ export const BackHomeButton = styled.button`
 `;
 
 export const HeaderTitle = styled.h1`
+    text-align: center;
     @media (min-width: 1024px) {
         position: absolute;
         font-size: 1.85rem;
@@ -58,6 +62,72 @@ export const HeaderTitle = styled.h1`
     } 
 `;
 
-export const CartList = styled.div``;
+export const CartList = styled.div`
+    margin: 70px 1rem 81px 1rem;
+`;
 
-export const Footer = styled.div``;
+export const Footer = styled.div`
+    position: fixed;
+    max-width: 1160px;
+    background-color: transparent; 
+    height: 81px;
+    width: 100%;
+    padding: 0 1rem;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const GoToCartButtonContent = styled.button`
+    text-decoration: none;
+    display: flex;
+    flex: 1;
+    height: 45px;
+    background-color: #db8e44;
+    border: 0;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    cursor: pointer;
+    opacity: 0.95;
+    transition: all ease-in-out 0.2s;
+    
+    &:hover {
+        scale: 1.01;
+        opacity: 1;
+    }
+`;
+
+export const ItensAmount = styled.div`
+    width: 30px;
+    height: 30px;
+    background-color: #FBA94C;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1rem;
+`;
+
+export const SeeCart = styled.h2`
+    font-size: 1.25rem;
+    color: #fff;
+`;
+
+export const ItensTotalPrice = styled.div`
+    height: 30px;
+    padding: 0 12px;
+    background-color: #FBA94C;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1rem;
+`;

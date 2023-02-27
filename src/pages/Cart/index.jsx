@@ -1,11 +1,11 @@
-import { BackHomeButton, CartList, Container, Footer, Header, HeaderTitle } from "./styles";
+import { BackHomeButton, CartList, Container, Footer, GoToCartButtonContent, Header, HeaderTitle, ItensAmount, ItensTotalPrice, SeeCart } from "./styles";
 import { IoArrowBackOutline } from "react-icons/io5"
 
 export function Cart() {
     return (
         <Container>
             <Header>
-                <BackHomeButton>
+                <BackHomeButton to="/">
                     <IoArrowBackOutline /> Voltar
                 </BackHomeButton>
 
@@ -15,11 +15,20 @@ export function Cart() {
             </Header>
 
             <CartList>
-
             </CartList>
 
             <Footer>
-
+                <GoToCartButtonContent to="/cart">
+                    <ItensAmount>
+                        2
+                    </ItensAmount>
+                    <SeeCart>
+                        Finalizar
+                    </SeeCart>
+                    <ItensTotalPrice>
+                        R$ 25,00
+                    </ItensTotalPrice>
+                </GoToCartButtonContent>
             </Footer>
         </Container>
     )
