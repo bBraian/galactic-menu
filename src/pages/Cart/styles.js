@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-    height: 70px;
+    height: 81px;
     width: 100%;
     gap: 16px;
     padding: 0 1rem;
@@ -63,7 +63,7 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const CartList = styled.div`
-    margin: 70px 1rem 81px 1rem;
+    margin: 81px 1rem;
 `;
 
 export const Footer = styled.div`
@@ -130,4 +130,58 @@ export const ItensTotalPrice = styled.div`
     font-weight: bold;
     border-radius: 8px;
     font-size: 1rem;
+`;
+
+export const Product = styled.div`
+    display: flex;
+    flex: 1;
+    gap: 12px;
+`;
+
+export const ProductImage = styled.img`
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 16px;
+`;
+
+export const ProductInfosBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+`;
+
+export const Row = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+`;
+
+export const ProductTitle = styled.h2`
+    font-size: 1rem;
+`;
+
+export const ProductDiscount = styled.div`
+`;
+
+export const CustomRow = styled.div`
+    display: flex;
+    gap: 12px;
+    flex: 1;
+`;
+
+export const ProductPrice = styled.p`
+
+`;
+
+export const ProductEdits = styled.div`
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+`;
+
+export const ProductCounter = styled.p`
+
 `;
