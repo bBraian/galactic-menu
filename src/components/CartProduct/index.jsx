@@ -1,5 +1,5 @@
-import { IoAdd, IoChevronDownOutline, IoTrash } from "react-icons/io5";
-import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductDiscount, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator } from "./styles";
+import { IoAdd, IoChevronDownOutline, IoRemove, IoTrash } from "react-icons/io5";
+import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductDiscount, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator, IncrementableButton, DeleteButton } from "./styles";
 
 export function CartProduct() {
     return (
@@ -18,9 +18,16 @@ export function CartProduct() {
                         </ButtonShowOptionals>
                     </CustomRow>
                     <ProductEdits>
-                        <IoTrash size={24} color="red" />
+                        {/* <DeleteButton>
+                            <IoTrash size={22} color="red" />
+                        </DeleteButton> */}
+                        <IncrementableButton>
+                            <IoRemove size={22} />
+                        </IncrementableButton>
                         <ProductCounter>1</ProductCounter>
-                        <IoAdd size={24} />
+                        <IncrementableButton>
+                            <IoAdd size={22} />
+                        </IncrementableButton>
                     </ProductEdits>
                 </ProductInfosBox>
             </Product>

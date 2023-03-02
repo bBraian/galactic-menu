@@ -72,6 +72,11 @@ export const ButtonShowOptionals = styled.button`
     cursor: pointer;
     width: 18px;
     height: 18px;
+    border-radius: 50%;
+    transition: background-color ease-in-out 0.1s;
+    &:hover {
+        background-color: #d7d7d7;
+    }
 `;
 
 export const ProductPrice = styled.p`
@@ -89,5 +94,29 @@ export const ProductEdits = styled.div`
 `;
 
 export const ProductCounter = styled.p`
+`;
 
+export const BaseButton = styled.button`
+    width: 26px;
+    height: 26px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color ease-in-out 0.1s;
+    cursor: pointer;
+    padding: 2px;
+`;
+
+export const DeleteButton = styled(BaseButton)`
+    &:hover {
+        background-color: #ffc0c0;
+    }
+`;
+
+export const IncrementableButton = styled(BaseButton)`
+    &:hover {
+        background-color: #d7d7d7;
+    }
 `;

@@ -23,7 +23,7 @@ export const Button = styled.button`
     width: 24px;
     cursor: pointer;
     border-radius: 50%;
-    transition: background ease-in-out 0.1s;
+    transition: background-color ease-in-out 0.1s;
 
     &:hover {
         background-color: #eee;
