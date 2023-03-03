@@ -23,7 +23,6 @@ export const Container = styled(Dialog.Content)`
     max-height: 90%;
     overflow: hidden;
     animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-
     &:focus {
         outline: none;
     }
@@ -31,6 +30,7 @@ export const Container = styled(Dialog.Content)`
     @media (max-width: 768px) {
         border-radius: 0;
         max-height: 100%;
+        height: 100%;
     }
 `;
 
@@ -38,7 +38,6 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     flex: 1;
-
     @media (max-width: 1080px) {
         flex-direction: column;
     }
@@ -46,7 +45,7 @@ export const Content = styled.div`
     @media (max-width: 768px) {
         flex-direction: column;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
     }
 `;
 
@@ -54,15 +53,13 @@ export const Image = styled.img`
     width: 500px;
     height: 500px;
     object-fit: cover;
-
     @media (max-width: 1080px) {
         width: 600px;
         height: 350px;
     }
-
     @media (max-width: 768px) {
         width: 100vw;
-        height: calc(50% - 60px);
+        height: 40%;
         object-fit: cover;
     }
 `;
@@ -71,13 +68,13 @@ export const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     width: 500px;
-
     @media (max-width: 1080px) {
         width: 600px;
     }
     @media (max-width: 768px) {
         width: 100vw;
-        height: 50vh;
+        height: 60%;
+        background-color: #F9F9F1;
     }
 `;
 
@@ -89,7 +86,6 @@ export const Header = styled.header`
     padding: 0 10px;
     height: 40px;
     align-items: center;
-
     @media (max-width: 768px) {
         display: none;
     }
@@ -112,7 +108,6 @@ export const CloseButton = styled(Dialog.Close)`
     color: #811D18;
     cursor: pointer;
     transition: ease-in-out 0.1s;
-
     &:hover {
         color: #fff;
     }
@@ -124,9 +119,8 @@ export const ScrolableContent = styled(ScrollArea.Root)`
     --scrollbar-size: 10px;
     background-color: #F9F9F1;
     padding: 14px;
-
     @media (max-width: 768px) {
-        height: 50vh;
+        height: 83%;
         padding: 0 14px;
     }
 `;
@@ -164,11 +158,6 @@ export const ScrollAreaThumb = styled(ScrollArea.ScrollAreaThumb)`
     }
 `;
 
-export const ProductInfosContent = styled.div`
-    width: 100%;
-    height: 50vh;
-`;
-
 export const Footer = styled.footer`
     width: 100%;
     display: flex;
@@ -178,10 +167,13 @@ export const Footer = styled.footer`
     height: 60px;
     align-items: center;
     background-color: #F9F9F1;
-
     @media (max-width: 768px) {
+        align-items: flex-start;
         position: fixed;
         bottom: 0;
+        height: 10%;
+        padding: 0 14px;
+        padding-top: 14px;
     }
 `;
 
@@ -195,7 +187,6 @@ export const AddToCartButton = styled.button`
     padding: 0 10px;
     cursor: pointer;
     transition: background ease-in-out 0.1s;
-
     &:hover {
         background-color: rgb(244, 160, 80);
     }
@@ -276,7 +267,6 @@ export const CommentsInput = styled.textarea`
 
 export const ProductTitleMobile = styled(ProductTitle)`
     display: none;
-
     @media (max-width: 768px) {
         display: block;
         margin: 14px 0;
@@ -285,7 +275,6 @@ export const ProductTitleMobile = styled(ProductTitle)`
 
 export const CloseButtonMobile = styled(CloseButton)`
     display: none;
-
     @media (max-width: 768px) {
         display: block;
         position: fixed;
