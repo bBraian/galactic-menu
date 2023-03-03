@@ -9,12 +9,15 @@ import { IncrementableButton } from '../IncrementableButton';
 import { Discount, ProductPrice } from '../Product/styles';
 import { OptionCard } from '../OptionCard';
 import { api } from '../../lib/axios';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export function AddToCartDialog({data}) {
     const [options, setOptions] = useState([]);
     const [optionsSelected, setOptionsSelected] = useState([]);
     const [amount, setAmount] = useState(1);
     const [price, setPrice] = useState('');
+    const { addToCart } = useContext(CartContext);
 
     function handleSetAmount(action) {
         if(action === 'plus') {
@@ -157,7 +160,9 @@ export function AddToCartDialog({data}) {
                                 setAmount={handleSetAmount}                            
                             />
 
-                            <AddToCartButton>
+                            <AddToCartButton
+                                onClick={() => addToCart({data})}
+                            >
                                 Adicionar {price.toLocaleString('pt-br', {
                                     style: 'currency',
                                     currency: 'BRL'

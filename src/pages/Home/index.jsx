@@ -6,6 +6,8 @@ import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import companyLogo from "../../assets/images/companylogo.png";
 import companyBg from "../../assets/images/companybg.png";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export function Home() {
     const [header, setHeader] = useState('normal')
@@ -15,6 +17,9 @@ export function Home() {
 
     const [productList, setProductList] = useState([])
     const [filteredProductList, setFilteredProductList] = useState([])
+
+    const { cart } = useContext(CartContext)
+    console.log(cart)
 
     useEffect(() => {
         getFoodCategory();
@@ -161,10 +166,11 @@ export function Home() {
  
             </FoodList>
 
+            { cart.length > 0 &&   
             <GoToCartButton>
                 <GoToCartButtonContent to="/cart">
                     <ItensAmount>
-                        2
+                        {cart.length}
                     </ItensAmount>
                     <SeeCart>
                         Ver carrinho
@@ -173,7 +179,8 @@ export function Home() {
                         R$ 25,00
                     </ItensTotalPrice>
                 </GoToCartButtonContent>        
-            </GoToCartButton>        
+            </GoToCartButton> }
+                 
         </Container>
     )
 }

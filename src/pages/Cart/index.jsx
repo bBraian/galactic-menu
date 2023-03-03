@@ -1,8 +1,11 @@
 import { BackHomeButton, CartList, Container, Footer, GoToCartButtonContent, Header, HeaderTitle, ItensAmount, ItensTotalPrice, SeeCart } from "./styles";
 import { IoArrowBackOutline } from "react-icons/io5"
 import { CartProduct } from "../../components/CartProduct";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export function Cart() {
+    const { cart } = useContext(CartContext)
     return (
         <Container>
             <Header>
@@ -16,15 +19,15 @@ export function Cart() {
             </Header>
 
             <CartList>
-                <CartProduct />
-                <CartProduct />
-                <CartProduct />
+                {cart.map(product => (
+                    <CartProduct key={product.data.id} />
+                ))}
             </CartList>
 
             <Footer>
                 <GoToCartButtonContent to="/cart">
                     <ItensAmount>
-                        2
+                        {cart.length}
                     </ItensAmount>
                     <SeeCart>
                         Finalizar
