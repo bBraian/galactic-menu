@@ -20,7 +20,10 @@ export function Cart() {
 
             <CartList>
                 {cart.map(product => (
-                    <CartProduct key={product.data.id} />
+                    <CartProduct 
+                        key={product.id}
+                        product={product}
+                    />
                 ))}
             </CartList>
 

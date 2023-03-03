@@ -44,6 +44,18 @@ export function AddToCartDialog({data}) {
         setOptions(res.data);
     }
 
+    function handleAddToCart() {
+        let product = {
+            id: data.id,
+            imageUrl: data.imageUrl,
+            title: data.title,
+            price: price,
+            amount: amount,
+            options: optionsSelected
+        }
+        addToCart(product)
+    }
+
     useEffect(() => {
         getOptions(data.categoryId);
     }, [])
@@ -161,7 +173,7 @@ export function AddToCartDialog({data}) {
                             />
 
                             <AddToCartButton
-                                onClick={() => addToCart({data})}
+                                onClick={handleAddToCart}
                             >
                                 Adicionar {price.toLocaleString('pt-br', {
                                     style: 'currency',
