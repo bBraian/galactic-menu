@@ -40,6 +40,10 @@ export const ProductTitle = styled.h2`
     color: ${props => props.theme['gray-600']};
     font-weight: 500;
     font-size: 1rem;
+    white-space: nowrap; 
+    width: 90%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 `;
 
 export const ProductDiscount = styled.div`

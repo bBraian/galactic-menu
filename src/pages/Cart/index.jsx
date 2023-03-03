@@ -1,8 +1,9 @@
-import { BackHomeButton, CartList, Container, Footer, GoToCartButtonContent, Header, HeaderTitle, ItensAmount, ItensTotalPrice, SeeCart } from "./styles";
+import { BackHomeButton, CartList, Container, Footer, GoToCartButtonContent, Header, HeaderTitle, ImgBg, ItensAmount, ItensTotalPrice, SeeCart } from "./styles";
 import { IoArrowBackOutline } from "react-icons/io5"
 import { CartProduct } from "../../components/CartProduct";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import CompanyBg from "../../assets/images/companybg.png";
 
 export function Cart() {
     const { cart } = useContext(CartContext)
@@ -12,6 +13,8 @@ export function Cart() {
                 <BackHomeButton to="/">
                     <IoArrowBackOutline /> Voltar
                 </BackHomeButton>
+
+                <ImgBg src={CompanyBg} />
 
                 <HeaderTitle>
                     Galaxy Menu | Carrinho

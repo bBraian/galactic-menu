@@ -42,6 +42,20 @@ export const BackHomeButton = styled(Link)`
     }
 `;
 
+export const ImgBg = styled.img`
+    display: none;
+    position: absolute;
+    width: 65%;
+    top: 0;
+    right: 0;
+    height: 81px;
+    object-fit: cover;
+    border-radius: 0px 0px 0px 50px;
+    @media (max-width: 768px) {
+        display: flex;
+    } 
+`;
+
 export const HeaderTitle = styled.h1`
     text-align: center;
     @media (min-width: 1024px) {
@@ -59,11 +73,13 @@ export const HeaderTitle = styled.h1`
     @media (max-width: 768px) {
         font-size: 1.50rem;
         position: relative;
+        text-shadow: 0px 0px 5px #000000;
+        color: #fff;
     } 
 `;
 
 export const CartList = styled.div`
-    margin: 81px 1rem;
+    margin: 89px 1rem;
 `;
 
 export const Footer = styled.div`
