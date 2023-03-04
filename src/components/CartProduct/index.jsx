@@ -1,5 +1,5 @@
 import { IoAdd, IoChevronDownOutline, IoRemove, IoTrash } from "react-icons/io5";
-import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductDiscount, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator, IncrementableButton, DeleteButton } from "./styles";
+import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator, IncrementableButton, DeleteButton, CollapsibleTrigger, CollapsibleContent, Option } from "./styles";
 
 export function CartProduct({ product }) {
     console.log(product)
@@ -12,15 +12,22 @@ export function CartProduct({ product }) {
                         <ProductTitle>{ product.title }</ProductTitle>
                     </Row>
                     <CustomRow>
-                        <ProductPrice>
-                            {product.price.toLocaleString('pt-br', {
-                                style: 'currency',
-                                currency: 'BRL'
-                            })}
-                        </ProductPrice>
-                        <ButtonShowOptionals>
-                            <IoChevronDownOutline />
-                        </ButtonShowOptionals>
+                        <CollapsibleTrigger>
+                            <ProductPrice>
+                                {product.price.toLocaleString('pt-br', {
+                                    style: 'currency',
+                                    currency: 'BRL'
+                                })}
+                            </ProductPrice>
+                            <ButtonShowOptionals>
+                                <IoChevronDownOutline />
+                            </ButtonShowOptionals>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                            { product.options.map(option => (
+                                <Option key={option.id}>{option.title}</Option>
+                            )) }
+                        </CollapsibleContent>
                     </CustomRow>
                     <ProductEdits>
                         { product.amount === 1 ?

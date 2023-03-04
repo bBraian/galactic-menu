@@ -79,6 +79,7 @@ export function Product({data}) {
                     </Content>
                 </Container>
             </Dialog.Trigger>
+            
             <AddToCartDialog 
                 data={{...data, discount: discount}}
             />

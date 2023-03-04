@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Collapsible from '@radix-ui/react-collapsible';
 
 export const Container = styled.div``;
 
@@ -61,13 +62,31 @@ export const ProductDiscount = styled.div`
     color: ${props => props.theme['white']};
 `;
 
-export const CustomRow = styled.div`
+export const CustomRow = styled(Collapsible.Root)`
     display: flex;
-    gap: 4px;
+    flex-direction: column;
     flex: 1;
+    gap: 2px;
 `;
 
-export const ButtonShowOptionals = styled.button`
+export const CollapsibleTrigger = styled(Collapsible.Trigger)`
+    display: flex;
+    flex-direction: row;
+    border: 0;
+    gap: 5px;
+`;
+
+export const CollapsibleContent = styled(Collapsible.Content)`
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+`;
+
+export const Option = styled.li`
+    font-size: 14px;
+`;
+
+export const ButtonShowOptionals = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
