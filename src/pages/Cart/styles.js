@@ -79,7 +79,13 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const CartList = styled.div`
-    margin: 89px 1rem;
+    @media (max-width: 768px) {
+        width: 100vw;
+    } 
+    
+    padding: 89px 1rem;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const Footer = styled.div`

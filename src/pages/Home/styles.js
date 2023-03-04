@@ -100,7 +100,7 @@ export const CompanyTitle = styled.h1`
 `;
 
 export const CompanyTitleSm = styled.h1`
-    margin: 0.25rem 0;
+    margin: 0.5rem 0 -0.35rem 0;
     font-size: 1.75rem;
 
     @media (max-width: 1024px) {

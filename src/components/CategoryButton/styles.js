@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion"
 
-export const Container = styled.button`
+export const Container = styled(motion.button)`
     z-index: 8;
     border: 2px solid ${props => (props.active ? props.theme['bar'] : props.theme['border'])};;
     background-color: ${props => (props.active ? props.theme['bar'] : props.theme['background'])};
@@ -11,9 +12,4 @@ export const Container = styled.button`
     white-space: nowrap;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform ease-in-out 0.1s;
-
-    &:hover {
-        transform: scale(1.05);
-    }
 `;

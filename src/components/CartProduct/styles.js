@@ -28,6 +28,7 @@ export const ProductInfosBox = styled.div`
     flex: 1;
     padding: 6px 12px;
     gap: 2px;
+    overflow: hidden;
 `;
 
 export const Row = styled.div`
@@ -41,7 +42,6 @@ export const ProductTitle = styled.h2`
     font-weight: 500;
     font-size: 1rem;
     white-space: nowrap; 
-    width: 90%; 
     overflow: hidden;
     text-overflow: ellipsis; 
 `;

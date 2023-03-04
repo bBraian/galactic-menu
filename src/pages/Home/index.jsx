@@ -97,7 +97,7 @@ export function Home() {
                 <HeaderFixed>
                     <HeaderFixedBox>
                         <CompanyInfos>
-                            <CompanyTitleSm>Braia's Bar</CompanyTitleSm>
+                            <CompanyTitleSm>Galaxy Menu</CompanyTitleSm>
                         </CompanyInfos>
 
                         <ScrollArea.Root>

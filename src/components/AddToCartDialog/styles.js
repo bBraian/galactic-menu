@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as Dialog from '@radix-ui/react-dialog';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+import { motion } from "framer-motion"
 
 export const Overlay = styled(Dialog.Overlay)`
     background-color: rgba(0, 0, 0, 0.6);
@@ -34,7 +35,7 @@ export const Container = styled(Dialog.Content)`
     }
 `;
 
-export const Content = styled.div`
+export const Content = styled(motion.div)`
     display: flex;
     flex-direction: row;
     flex: 1;
@@ -177,7 +178,7 @@ export const Footer = styled.footer`
     }
 `;
 
-export const AddToCartButton = styled.button`
+export const AddToCartButton = styled(Dialog.Close)`
     background-color: #DB8E44;
     border: 0;
     border-radius: 12px;
