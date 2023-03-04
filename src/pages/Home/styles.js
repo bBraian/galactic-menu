@@ -152,7 +152,7 @@ export const CategoryBox = styled.div`
 
 export const FoodList = styled.div`
     padding: 0 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     margin-top: 16rem;
 
 

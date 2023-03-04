@@ -19,9 +19,10 @@ export function CartProduct({ product }) {
                                     currency: 'BRL'
                                 })}
                             </ProductPrice>
+                            {product.options.length > 0 && 
                             <ButtonShowOptionals>
                                 <IoChevronDownOutline />
-                            </ButtonShowOptionals>
+                            </ButtonShowOptionals>}
                         </CollapsibleTrigger>
                         <CollapsibleContent>
                             { product.options.map(option => (

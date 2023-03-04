@@ -11,6 +11,7 @@ import { CartContext } from "../../context/CartContext";
 
 export function Home() {
     const [header, setHeader] = useState('normal')
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const [foodCategory, setFoodCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
@@ -44,6 +45,15 @@ export function Home() {
             setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
         }
     }, [categorySelected])
+
+    useEffect(() => {
+        let totalPrice = 0;
+        cart.map(item => {
+            totalPrice += item.price;
+        })
+
+        setTotalPrice(totalPrice);
+    }, [cart])
     
     async function getFoodCategory() {
         const res = await api.get('categories');
@@ -176,11 +186,13 @@ export function Home() {
                         Ver carrinho
                     </SeeCart>
                     <ItensTotalPrice>
-                        R$ 25,00
+                        {totalPrice.toLocaleString('pt-br', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        })}
                     </ItensTotalPrice>
                 </GoToCartButtonContent>        
             </GoToCartButton> }
-                 
         </Container>
     )
 }
