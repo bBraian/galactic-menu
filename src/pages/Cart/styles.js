@@ -36,6 +36,7 @@ export const BackHomeButton = styled(Link)`
     font-size: 1rem;
     cursor: pointer;
     transition: transform ease-in-out 0.1s;
+    z-index: 999;
 
     &:hover {
         transform: scale(1.05);
@@ -45,12 +46,13 @@ export const BackHomeButton = styled(Link)`
 export const ImgBg = styled.img`
     display: none;
     position: absolute;
-    width: 65%;
+    width: 100%;
     top: 0;
-    right: 0;
+    /* right: 10px; */
+    left: 0;
     height: 81px;
     object-fit: cover;
-    border-radius: 0px 0px 0px 50px;
+    /* border-radius: 0px 0px 50px 50px; */
     @media (max-width: 768px) {
         display: flex;
     } 

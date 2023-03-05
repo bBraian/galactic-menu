@@ -33,7 +33,10 @@ export function Product({data}) {
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild >
-                <Container>
+                <Container
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                >
                     <Image src={data.imageUrl} />
                     <Content>
 

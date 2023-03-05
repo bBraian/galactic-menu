@@ -6,7 +6,7 @@ import { CartContext } from "../../context/CartContext";
 import CompanyBg from "../../assets/images/companybg.png";
 
 export function Cart() {
-    const { cart } = useContext(CartContext)
+    const { cart, totalCartPrice } = useContext(CartContext)
     return (
         <Container>
             <Header>
@@ -39,7 +39,10 @@ export function Cart() {
                         Finalizar
                     </SeeCart>
                     <ItensTotalPrice>
-                        R$ 25,00
+                        {totalCartPrice.toLocaleString('pt-br', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        })}
                     </ItensTotalPrice>
                 </GoToCartButtonContent>
             </Footer>

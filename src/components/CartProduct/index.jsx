@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { IoAdd, IoChevronDownOutline, IoRemove, IoTrash } from "react-icons/io5";
+import { CartContext } from "../../context/CartContext";
 import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator, IncrementableButton, DeleteButton, CollapsibleTrigger, CollapsibleContent, Option } from "./styles";
 
 export function CartProduct({ product }) {
-    console.log(product)
+    const { deleteFromCart } = useContext(CartContext); 
     return (
         <Container>
             <Product>
@@ -32,7 +34,7 @@ export function CartProduct({ product }) {
                     </CustomRow>
                     <ProductEdits>
                         { product.amount === 1 ?
-                        <DeleteButton>
+                        <DeleteButton onClick={() => deleteFromCart(product.cartProductId)}>
                             <IoTrash size={22} color="red" />
                         </DeleteButton>
                         :

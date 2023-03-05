@@ -11,7 +11,6 @@ import { CartContext } from "../../context/CartContext";
 
 export function Home() {
     const [header, setHeader] = useState('normal')
-    const [totalPrice, setTotalPrice] = useState(0);
 
     const [foodCategory, setFoodCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
@@ -19,7 +18,7 @@ export function Home() {
     const [productList, setProductList] = useState([])
     const [filteredProductList, setFilteredProductList] = useState([])
 
-    const { cart } = useContext(CartContext)
+    const { cart, totalCartPrice } = useContext(CartContext)
     console.log(cart)
 
     useEffect(() => {
@@ -45,15 +44,6 @@ export function Home() {
             setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
         }
     }, [categorySelected])
-
-    useEffect(() => {
-        let totalPrice = 0;
-        cart.map(item => {
-            totalPrice += item.price;
-        })
-
-        setTotalPrice(totalPrice);
-    }, [cart])
     
     async function getFoodCategory() {
         const res = await api.get('categories');
@@ -147,7 +137,10 @@ export function Home() {
                                 <ProductCategoryBox>
                                     {product.categoryProducts.map(prod => {
                                         return (
-                                            <Product key={prod.id} data={{...prod, categoryId: product.categoryId}} />
+                                            <Product 
+                                                key={prod.id} 
+                                                data={{...prod, categoryId: product.categoryId}} 
+                                            />
                                         )
                                     })}
                                 </ProductCategoryBox>
@@ -186,7 +179,7 @@ export function Home() {
                         Ver carrinho
                     </SeeCart>
                     <ItensTotalPrice>
-                        {totalPrice.toLocaleString('pt-br', {
+                        {totalCartPrice.toLocaleString('pt-br', {
                             style: 'currency',
                             currency: 'BRL'
                         })}

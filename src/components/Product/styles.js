@@ -1,17 +1,13 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Container = styled.div`
+export const Container = styled(motion.button)`
     display: flex;
     border: 1px solid ${props => props.theme['border']};
     flex-direction: row;
     border-radius: 16px;
     width: 100%;
     cursor: pointer;
-    transition: transform ease-in-out 0.1s;
-
-    &:hover {
-        transform: scale(1.02);
-    }
 `;
 
 export const Image = styled.img`

@@ -12,6 +12,8 @@ import { api } from '../../lib/axios';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
+import { v4 as uuidv4 } from 'uuid';
+
 export function AddToCartDialog({data}) {
     const [options, setOptions] = useState([]);
     const [optionsSelected, setOptionsSelected] = useState([]);
@@ -45,7 +47,9 @@ export function AddToCartDialog({data}) {
     }
 
     function handleAddToCart() {
+        const cartProductId = uuidv4();
         let product = {
+            cartProductId,
             id: data.id,
             imageUrl: data.imageUrl,
             title: data.title,
