@@ -14,7 +14,7 @@ export function CartContextProvider({ children }) {
     function calculateTotalPrice() {
         let totalSum = 0;
         cart.map(item => {
-            totalSum += item.price;
+            totalSum += (item.price)*item.amount;
         })
 
         setTotalCartPrice(totalSum);
@@ -22,6 +22,19 @@ export function CartContextProvider({ children }) {
 
     function deleteFromCart(cartProductId) {
         setCart(state => state.filter(item => item.cartProductId != cartProductId))
+    }
+
+    function addOrRemoveProduct(cartProductId, action) {
+        let cartWithOutEditedOne = cart.filter(item => item.cartProductId != cartProductId);
+        let registerEdit = cart.find(item => item.cartProductId == cartProductId);
+        console.log("reg",registerEdit);
+        console.log("cart",cartWithOutEditedOne);
+        if(action === "remove") {
+            registerEdit.amount--;
+        } else if(action === "add") {
+            registerEdit.amount++;
+        }
+        setCart([registerEdit, ...cartWithOutEditedOne])
     }
 
     useEffect(() => {
@@ -35,7 +48,8 @@ export function CartContextProvider({ children }) {
                 setCart,
                 addToCart,
                 totalCartPrice,
-                deleteFromCart
+                deleteFromCart,
+                addOrRemoveProduct
             }}
         >
             { children }

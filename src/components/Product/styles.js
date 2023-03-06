@@ -94,13 +94,16 @@ export const ProductPrice = styled.span`
     font-size: 14px;
 `;
 
-export const ButtonAddProduct = styled.button`
+export const ButtonAddProduct = styled.div`
     height: 1.65rem;
     width: 1.65rem;
     border-radius: 10px;
     border: 0;
     font-size: 1.25rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: ${props => props.theme['white']};
     background-color: ${props => props.theme['bar']};
 `;

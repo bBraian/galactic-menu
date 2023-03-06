@@ -53,7 +53,7 @@ export function AddToCartDialog({data}) {
             id: data.id,
             imageUrl: data.imageUrl,
             title: data.title,
-            price: price,
+            price: data.price.discounted === "" ? data.price.original : data.price.discounted,
             amount: amount,
             options: optionsSelected
         }

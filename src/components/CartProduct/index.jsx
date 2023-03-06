@@ -4,7 +4,7 @@ import { CartContext } from "../../context/CartContext";
 import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator, IncrementableButton, DeleteButton, CollapsibleTrigger, CollapsibleContent, Option } from "./styles";
 
 export function CartProduct({ product }) {
-    const { deleteFromCart } = useContext(CartContext); 
+    const { deleteFromCart, addOrRemoveProduct } = useContext(CartContext); 
     return (
         <Container>
             <Product>
@@ -38,13 +38,13 @@ export function CartProduct({ product }) {
                             <IoTrash size={22} color="red" />
                         </DeleteButton>
                         :
-                        <IncrementableButton>
+                        <IncrementableButton onClick={() => addOrRemoveProduct(product.cartProductId, "remove")}>
                             <IoRemove size={22} />
                         </IncrementableButton>
                         }
                         
                         <ProductCounter>{ product.amount }</ProductCounter>
-                        <IncrementableButton>
+                        <IncrementableButton onClick={() => addOrRemoveProduct(product.cartProductId, "add")}>
                             <IoAdd size={22} />
                         </IncrementableButton>
                     </ProductEdits>

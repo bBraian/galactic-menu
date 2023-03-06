@@ -5,8 +5,18 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import CompanyBg from "../../assets/images/companybg.png";
 
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 export function Cart() {
     const { cart, totalCartPrice } = useContext(CartContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(cart.length === 0) {
+            navigate('/');
+        }
+    }, [cart])
     return (
         <Container>
             <Header>
