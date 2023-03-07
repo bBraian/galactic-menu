@@ -26,9 +26,9 @@ export const BackHomeButton = styled(Link)`
     display: flex;
     align-items: center;
     gap: 5px;
-    border: 2px solid ${props => (props.active ? props.theme['bar'] : props.theme['border'])};;
+    border: 2px solid ${props => (props.active ? props.theme['bar'] : props.theme['border'])};
     background-color: ${props => (props.active ? props.theme['bar'] : props.theme['background'])};
-    color: ${props => (props.active ? props.theme['white'] : props.theme['gray-900'])};;
+    color: ${props => (props.active ? props.theme['white'] : props.theme['gray-900'])};
     border-radius: 12px;
     padding: 0.5rem 0.75rem;
     text-align: center;

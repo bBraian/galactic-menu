@@ -58,6 +58,7 @@ export function AddToCartDialog({data}) {
             options: optionsSelected
         }
         addToCart(product)
+        setPrice(data.price.discounted === "" ? data.price.original : data.price.discounted)
     }
 
     useEffect(() => {

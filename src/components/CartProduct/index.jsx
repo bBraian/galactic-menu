@@ -4,7 +4,15 @@ import { CartContext } from "../../context/CartContext";
 import { ButtonShowOptionals, CustomRow, Product, ProductCounter, ProductEdits, ProductImage, ProductInfosBox, ProductPrice, ProductTitle, Container, Row, Separator, IncrementableButton, DeleteButton, CollapsibleTrigger, CollapsibleContent, Option } from "./styles";
 
 export function CartProduct({ product }) {
-    const { deleteFromCart, addOrRemoveProduct } = useContext(CartContext); 
+    const { deleteFromCart, addOrRemoveProduct } = useContext(CartContext);
+
+    function calculatePrice() {
+        let price = product.price;
+        product.options.map(opt => {
+            price += opt.price;
+        })
+        return price;
+    }
     return (
         <Container>
             <Product>
@@ -16,7 +24,7 @@ export function CartProduct({ product }) {
                     <CustomRow>
                         <CollapsibleTrigger>
                             <ProductPrice>
-                                {product.price.toLocaleString('pt-br', {
+                                {calculatePrice().toLocaleString('pt-br', {
                                     style: 'currency',
                                     currency: 'BRL'
                                 })}
@@ -28,7 +36,17 @@ export function CartProduct({ product }) {
                         </CollapsibleTrigger>
                         <CollapsibleContent>
                             { product.options.map(option => (
-                                <Option key={option.id}>{option.title}</Option>
+                                <Option 
+                                    key={option.id}
+                                >
+                                +{` `}
+                                {option.price.toLocaleString('pt-br', {
+                                    style: 'currency',
+                                    currency: 'BRL'
+                                })}
+                                {` `} 
+                                {option.title}
+                                </Option>
                             )) }
                         </CollapsibleContent>
                     </CustomRow>
