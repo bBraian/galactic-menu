@@ -17,6 +17,13 @@ export function Cart() {
             navigate('/');
         }
     }, [cart])
+
+    function sendWhatsMessageWithOrder() {
+        const baseURL = 'https://wa.me/5551996268989?text=';
+        let message = 'Pedido%20%2347345%0A%0AHamburguer%2008%0A*%20Bacon%0A*%20Barbecue%0A%0APizza%20de%20frango%0A*%20Sem%20queijo%0A%0ATotal%3A%2074%2C00';
+        const url = baseURL+message;
+        window.open(url, "_blank");
+    }
     return (
         <Container>
             <Header>
@@ -41,7 +48,7 @@ export function Cart() {
             </CartList>
 
             <Footer>
-                <GoToCartButtonContent to="/cart">
+                <GoToCartButtonContent onClick={sendWhatsMessageWithOrder}>
                     <ItensAmount>
                         {cart.length}
                     </ItensAmount>
