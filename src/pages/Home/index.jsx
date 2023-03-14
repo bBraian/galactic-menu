@@ -4,12 +4,10 @@ import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, Co
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
-import companyLogo from "../../assets/images/companylogo.png";
-import companyBg from "../../assets/images/companybg.png";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
-export function Home() {
+export function Home({client}) {
     const [header, setHeader] = useState('normal')
 
     const [foodCategory, setFoodCategory] = useState([]);
@@ -61,10 +59,10 @@ export function Home() {
             {header === 'normal' ? 
                 (
                 <Header>
-                    <CompanyBgImg src={companyBg} />
+                    <CompanyBgImg src={client.background} />
                     <CompanyInfos>
-                        <CompanyLogo src={companyLogo} />
-                        <CompanyTitle>Galaxy Menu</CompanyTitle>
+                        <CompanyLogo src={client.logo} />
+                        <CompanyTitle>{client.title}</CompanyTitle>
                     </CompanyInfos>
 
                    
