@@ -17,7 +17,7 @@ export function Home({client}) {
     const [filteredProductList, setFilteredProductList] = useState([])
 
     const { cart, totalCartPrice } = useContext(CartContext)
-    console.log(cart)
+    console.log(client)
 
     useEffect(() => {
         getFoodCategory();
@@ -44,7 +44,11 @@ export function Home({client}) {
     }, [categorySelected])
     
     async function getFoodCategory() {
-        const res = await api.get('categories');
+        const res = await api.get('categories', {
+            params: {
+                clientId: client.id
+            }
+        });
         setFoodCategory(res.data);
     }
 
