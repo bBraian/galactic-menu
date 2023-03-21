@@ -12,9 +12,11 @@ export function Home({client}) {
 
     const [foodCategory, setFoodCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
+    const [defaultCategory, setDefaultCategory] = useState(0);
 
     const [productList, setProductList] = useState([])
     const [filteredProductList, setFilteredProductList] = useState([])
+    console.log("defaultCategory", defaultCategory)
 
     const { cart, totalCartPrice } = useContext(CartContext)
     console.log(client)
@@ -38,10 +40,18 @@ export function Home({client}) {
     }, [])
 
     useEffect(() => {
-        if(categorySelected !== 0) {
+        if(categorySelected !== defaultCategory) {
             setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
         }
     }, [categorySelected])
+
+    useEffect(() => {
+        if(foodCategory.length > 0) {
+            let defCat = foodCategory.filter(category => category.default === true)[0];
+            setDefaultCategory(defCat.id)
+            setCategorySelected(defCat.id);
+        }
+    }, [foodCategory])
     
     async function getFoodCategory() {
         const res = await api.get('categories?clientId='+client.id);
@@ -126,7 +136,7 @@ export function Home({client}) {
             }
 
             <FoodList>
-                {categorySelected !== 0 ? (
+                {categorySelected !== defaultCategory ? (
                     <>
                     { filteredProductList.map(product => {
                         return (
