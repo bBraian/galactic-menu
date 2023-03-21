@@ -44,16 +44,12 @@ export function Home({client}) {
     }, [categorySelected])
     
     async function getFoodCategory() {
-        const res = await api.get('categories', {
-            params: {
-                clientId: client.id
-            }
-        });
+        const res = await api.get('categories?clientId='+client.id);
         setFoodCategory(res.data);
     }
 
     async function getProductList() {
-        const res = await api.get('products');
+        const res = await api.get('products?clientId='+client.id);
         setProductList(res.data);
     }
 
