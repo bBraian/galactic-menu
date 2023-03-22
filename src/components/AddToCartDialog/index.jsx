@@ -15,6 +15,7 @@ import { CartContext } from '../../context/CartContext';
 import { v4 as uuidv4 } from 'uuid';
 
 export function AddToCartDialog({data}) {
+    console.log(data)
     const [options, setOptions] = useState([]);
     const [optionsSelected, setOptionsSelected] = useState([]);
     const [amount, setAmount] = useState(1);
@@ -58,7 +59,7 @@ export function AddToCartDialog({data}) {
             options: optionsSelected
         }
         addToCart(product)
-        setPrice(data.price.discounted === "" ? data.price.original : data.price.discounted)
+        setPrice(data.price.discounted === "" ? parseInt(data.price.original) : parseInt(data.price.discounted))
     }
 
     useEffect(() => {
@@ -68,9 +69,9 @@ export function AddToCartDialog({data}) {
     useEffect(() => {
         let currentPrice = 0
         if(data.price.discounted === "") {
-            currentPrice = data.price.original * amount;
+            currentPrice = parseInt(data.price.original) * amount;
         } else {
-            currentPrice = data.price.discounted * amount;
+            currentPrice = parseInt(data.price.discounted) * amount;
         }
 
         currentPrice += calculateOptionsSelectedPrice();
