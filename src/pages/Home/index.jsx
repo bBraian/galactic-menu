@@ -16,10 +16,8 @@ export function Home({client}) {
 
     const [productList, setProductList] = useState([])
     const [filteredProductList, setFilteredProductList] = useState([])
-    console.log("defaultCategory", defaultCategory)
 
     const { cart, totalCartPrice } = useContext(CartContext)
-    console.log(client)
 
     useEffect(() => {
         getFoodCategory();

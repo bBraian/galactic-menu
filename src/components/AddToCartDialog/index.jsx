@@ -15,7 +15,6 @@ import { CartContext } from '../../context/CartContext';
 import { v4 as uuidv4 } from 'uuid';
 
 export function AddToCartDialog({data}) {
-    console.log(data)
     const [options, setOptions] = useState([]);
     const [optionsSelected, setOptionsSelected] = useState([]);
     const [amount, setAmount] = useState(1);
