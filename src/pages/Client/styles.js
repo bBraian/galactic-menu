@@ -76,7 +76,10 @@ export const ClientList = styled.div`
     padding: 0 1rem;
     margin-bottom: 5rem;
     margin-top: 15rem;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    gap: 20px;
 
     @media (max-width: 1024px) {
         margin-top: 15rem;
@@ -85,4 +88,36 @@ export const ClientList = styled.div`
     @media (max-width: 768px) {
         margin-top: 11.5rem;
     } 
+`;
+
+export const ClientBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #C4C4C4;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+`;
+
+export const ClientBg = styled.img`
+    width: 200px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 16px 0px 100% 16px;
+`;
+
+export const ClientPhoto = styled.img`
+    width: 95px;
+    height: 95px;
+    border-radius: 16px;
+    object-fit: cover;
+    position: absolute;
+    left: 125px;
+    top: 17.5px;
+`;
+
+export const ClientTitle = styled.h2`
+    font-size: 38px;
+    margin-left: 32px;
+    margin-top: 50px;
 `;
