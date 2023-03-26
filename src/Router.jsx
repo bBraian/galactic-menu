@@ -6,6 +6,7 @@ import { Admin } from "./pages/Admin";
 import { Demo } from "./pages/Demo";
 import { Cart } from "./pages/Cart";
 import { api } from "./lib/axios";
+import { Client } from "./pages/Client";
 
 export function Router() {
     const [clientsRouter, setClientsRoutes] = useState([]);
@@ -30,6 +31,7 @@ export function Router() {
                     element={<Home client={client} />} 
                 />
             ))}
+            <Route path='/' element={<Client/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/admin' element={<Admin/>} />
             <Route path='/cart' element={<Cart/>} />
