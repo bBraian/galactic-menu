@@ -44,7 +44,7 @@ export function Home({client}) {
     }, [categorySelected])
     
     async function getFoodCategory() {
-        const res = await api.get('categories');
+        const res = await api.get('clients/categories?clientId='+client.id);
         setFoodCategory(res.data);
     }
 

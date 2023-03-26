@@ -11,7 +11,7 @@ export function Router() {
     const [clientsRouter, setClientsRoutes] = useState([]);
 
     async function getClientsRoutes() {
-        const res = await api.get('clients');
+        const res = await api.get('clients/all');
         setClientsRoutes(res.data);
     }
 
