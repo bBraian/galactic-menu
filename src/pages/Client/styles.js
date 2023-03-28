@@ -88,6 +88,7 @@ export const ClientList = styled.div`
 
     @media (max-width: 768px) {
         margin-top: 11.5rem;
+        grid-template-columns: 1fr;
     } 
 `;
 
@@ -106,6 +107,10 @@ export const ClientBg = styled.img`
     height: 130px;
     object-fit: cover;
     border-radius: 16px 0px 100% 16px;
+    @media (max-width: 768px) {
+        width: 150px;
+        height: 120px;
+    } 
 `;
 
 export const ClientPhoto = styled.img`
@@ -116,10 +121,21 @@ export const ClientPhoto = styled.img`
     position: absolute;
     left: 125px;
     top: 17.5px;
+    @media (max-width: 768px) {
+        width: 85px;
+        height: 85px;
+        left: 80px;
+        top: 18px;
+    } 
 `;
 
 export const ClientTitle = styled.h2`
     font-size: 38px;
-    margin-left: 32px;
+    margin-left: 46px;
     margin-top: 50px;
+    @media (max-width: 768px) {
+        font-size: 28px;
+        margin-top: 40px;
+        margin-left: 30px;
+    } 
 `;

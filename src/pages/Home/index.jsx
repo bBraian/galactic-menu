@@ -103,7 +103,7 @@ export function Home({client}) {
                 <HeaderFixed>
                     <HeaderFixedBox>
                         <CompanyInfos>
-                            <CompanyTitleSm>Galaxy Menu</CompanyTitleSm>
+                            <CompanyTitleSm>{client.title}</CompanyTitleSm>
                         </CompanyInfos>
 
                         <ScrollArea.Root>
