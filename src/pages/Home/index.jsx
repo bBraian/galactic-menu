@@ -38,6 +38,7 @@ export function Home({client}) {
     }, [])
 
     useEffect(() => {
+        console.log(categorySelected);
         if(categorySelected !== defaultCategory) {
             setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
         }
