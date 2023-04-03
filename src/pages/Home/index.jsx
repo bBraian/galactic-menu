@@ -6,9 +6,12 @@ import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { useParams } from "react-router-dom";
 
-export function Home({client}) {
+export function Home() {
+    const [client, setClient] = useState({})
     const [header, setHeader] = useState('normal')
+    const { clientName } = useParams();
 
     const [foodCategory, setFoodCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
@@ -20,8 +23,7 @@ export function Home({client}) {
     const { cart, totalCartPrice } = useContext(CartContext)
 
     useEffect(() => {
-        getFoodCategory();
-        getProductList();
+        getClientData();
 
         function scrollListner() {
             if(window.scrollY > 100) {
@@ -52,13 +54,15 @@ export function Home({client}) {
         }
     }, [foodCategory])
     
-    async function getFoodCategory() {
-        const res = await api.get('categories?clientId='+client.id);
-        setFoodCategory(res.data);
-    }
+    async function getClientData() {
+        const cli = await api.get('clients?name='+clientName);
+        setClient(cli.data);
+        const clientId = await cli.data.id;
 
-    async function getProductList() {
-        const res = await api.get('products?clientId='+client.id);
+        const cat = await api.get('categories?clientId='+clientId);
+        setFoodCategory(cat.data);
+
+        const res = await api.get('products?clientId='+clientId);
         setProductList(res.data);
     }
 
