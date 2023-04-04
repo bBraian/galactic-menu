@@ -22,7 +22,6 @@ export function Client() {
         navigate("/"+clientURL);
     }
 
-    console.log(clients)
     useEffect(() => {
         getClients();
     }, [])

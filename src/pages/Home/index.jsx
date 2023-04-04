@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CategoryButton } from "../../components/CategoryButton";
-import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, GoToCartButton, GoToCartButtonContent, Header, HeaderFixed, HeaderFixedBox, ItensAmount, ItensTotalPrice, ProductCategoryBox, ScrollAreaScrollbar, ScrollAreaThumb, SeeCart } from "./styles";
+import { CategoryBox, CategoryDiv, CategoryTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, CompanyTitleSm, Container, FoodList, GoToCartButton, GoToCartButtonContent, Header, HeaderFixed, HeaderFixedBox, ItensAmount, ItensTotalPrice, ProductCategoryBox, ScrollAreaScrollbar, ScrollAreaThumb, SeeCart, SkeletonBg, SkeletonCattegory, SkeletonCatTitle, SkeletonLogo, SkeletonProduct, SkeletonTitle } from "./styles";
 import { api } from "../../lib/axios";
 import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
@@ -11,7 +11,9 @@ import { useParams } from "react-router-dom";
 export function Home() {
     const [client, setClient] = useState({})
     const [header, setHeader] = useState('normal')
+    const [loading, setLoading] = useState(true);
     const { clientName } = useParams();
+    const arr = [0,1,2,3];
 
     const [foodCategory, setFoodCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
@@ -40,7 +42,6 @@ export function Home() {
     }, [])
 
     useEffect(() => {
-        console.log(categorySelected);
         if(categorySelected !== defaultCategory) {
             setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
         }
@@ -64,6 +65,7 @@ export function Home() {
 
         const res = await api.get('products?clientId='+clientId);
         setProductList(res.data);
+        setLoading(false);
     }
 
     return (
@@ -72,26 +74,49 @@ export function Home() {
             {header === 'normal' ? 
                 (
                 <Header>
+                    {loading ? 
+                    <SkeletonBg />
+                    :
                     <CompanyBgImg src={client.background} />
+                    }
+                    
+                    {loading ? 
+                    <CompanyInfos>
+                        <SkeletonLogo />
+                        <SkeletonTitle />
+                    </CompanyInfos>
+                    :
                     <CompanyInfos>
                         <CompanyLogo src={client.logo} />
                         <CompanyTitle>{client.title}</CompanyTitle>
-                    </CompanyInfos>
-
+                    </CompanyInfos> 
+                    
+                    }
                    
                     <ScrollArea.Root>
                         <ScrollArea.Viewport>
                             <CategoryBox paddingTop="0.8rem">
-                                {foodCategory.map(category => {
-                                    return (
-                                        <CategoryButton
-                                            active={categorySelected === category.id ? true : false}
-                                            key={category.id}
-                                            data={category}
-                                            setCategorySelected={setCategorySelected}
-                                        />
-                                    )
-                                })}
+                                {loading ? 
+                                    <>
+                                        {arr.map(() => (
+                                            <SkeletonCattegory />
+                                        ))}
+                                    </>
+                                : 
+                                <>
+                                    {foodCategory.map(category => {
+                                        return (
+                                            <CategoryButton
+                                                active={categorySelected === category.id ? true : false}
+                                                key={category.id}
+                                                data={category}
+                                                setCategorySelected={setCategorySelected}
+                                            />
+                                        )
+                                    })}
+                                </>
+                                }
+                                
                             </CategoryBox>
 
                         </ScrollArea.Viewport>
@@ -139,44 +164,62 @@ export function Home() {
             }
 
             <FoodList>
-                {categorySelected !== defaultCategory ? (
-                    <>
-                    { filteredProductList.map(product => {
-                        return (
-                            <CategoryDiv key={product.categoryId}>
-                                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
-                                <ProductCategoryBox>
-                                    {product.categoryProducts.map(prod => {
-                                        return (
-                                            <Product 
-                                                key={prod.id} 
-                                                data={{...prod, categoryId: product.categoryId}} 
-                                            />
-                                        )
-                                    })}
-                                </ProductCategoryBox>
-                            </CategoryDiv>
-                        )
-                    })}
-                    </>
-                ) : (
-                    <>
-                    { productList.map(product => {
-                        return (
-                            <CategoryDiv key={product.categoryId}>
-                                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
-                                <ProductCategoryBox>
-                                    {product.categoryProducts.map(prod => {
-                                        return (
-                                            <Product key={prod.id} data={{...prod, categoryId: product.categoryId}} />
-                                        )
-                                    })}
-                                </ProductCategoryBox>
-                            </CategoryDiv>
-                        )
-                    })}
-                    </>
-                )}
+                {loading ? 
+                <>
+                    {arr.map((i, k) => (
+                        <CategoryDiv key={k}>
+                            <SkeletonCatTitle />
+                            <ProductCategoryBox>
+                                {arr.map((i, k) => (
+                                    <SkeletonProduct key={k} />
+                                ))}
+                            </ProductCategoryBox>
+                        </CategoryDiv>
+                    ))}
+                </>
+                :
+                <>
+                    {categorySelected !== defaultCategory ? (
+                        <>
+                        { filteredProductList.map(product => {
+                            return (
+                                <CategoryDiv key={product.categoryId}>
+                                    <CategoryTitle>{product.categoryTitle}</CategoryTitle>
+                                    <ProductCategoryBox>
+                                        {product.categoryProducts.map(prod => {
+                                            return (
+                                                <Product 
+                                                    key={prod.id} 
+                                                    data={{...prod, categoryId: product.categoryId}} 
+                                                />
+                                            )
+                                        })}
+                                    </ProductCategoryBox>
+                                </CategoryDiv>
+                            )
+                        })}
+                        </>
+                    ) : (
+                        <>
+                        { productList.map(product => {
+                            return (
+                                <CategoryDiv key={product.categoryId}>
+                                    <CategoryTitle>{product.categoryTitle}</CategoryTitle>
+                                    <ProductCategoryBox>
+                                        {product.categoryProducts.map(prod => {
+                                            return (
+                                                <Product key={prod.id} data={{...prod, categoryId: product.categoryId}} />
+                                            )
+                                        })}
+                                    </ProductCategoryBox>
+                                </CategoryDiv>
+                            )
+                        })}
+                        </>
+                    )}
+                </>
+                }
+                
  
             </FoodList>
 

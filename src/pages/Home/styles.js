@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { Link } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export const Container = styled.div`
     display: flex;
@@ -58,6 +60,24 @@ export const CompanyBgImg = styled.img`
     } 
 `;
 
+export const SkeletonBg = styled(Skeleton).attrs(({
+    baseColor:"#c4c4c4", 
+    highlightColor:"#f1f1f1" 
+}))`
+    width: 100%;
+    height: 10rem;
+    border-radius: 0 0 16px 16px;
+
+    @media (max-width: 1024px) {
+        height: 8.875rem;
+    }
+
+    @media (max-width: 768px) {
+        border-radius: 0;
+        height: 5.565rem;
+    } 
+`;
+
 export const CompanyInfos = styled.div`
     display: flex;
     position: relative;
@@ -66,6 +86,27 @@ export const CompanyInfos = styled.div`
 `;
 
 export const CompanyLogo = styled.img`
+    height: 8.25rem;
+    width: 8.25rem;
+    border-radius: 16px;
+    position: absolute;
+    bottom: 0;
+
+    @media (max-width: 1024px) {
+        height: 7.25rem;
+        width: 7.25rem;        
+    }
+
+    @media (max-width: 768px) {
+        height: 5rem;
+        width: 5rem;
+    } 
+`;
+
+export const SkeletonLogo = styled(Skeleton).attrs(({
+    baseColor:"#c4c4c4", 
+    highlightColor:"#f1f1f1" 
+}))`
     height: 8.25rem;
     width: 8.25rem;
     border-radius: 16px;
@@ -99,6 +140,26 @@ export const CompanyTitle = styled.h1`
     } 
 `;
 
+export const SkeletonTitle = styled(Skeleton).attrs(({
+    baseColor:"#c4c4c4", 
+    highlightColor:"#f1f1f1" 
+}))`
+    margin: 0.25rem 0;
+    height: 1.85rem;
+    border-radius: 0.5rem;
+    margin-left: 9.15rem;
+
+    @media (max-width: 1024px) {
+        margin-left: 8.15rem;
+        height: 1.65rem     
+    }
+
+    @media (max-width: 768px) {
+        margin-left: 5.90rem;
+        height: 1.50rem;
+    } 
+`;
+
 export const CompanyTitleSm = styled.h1`
     margin: 0.5rem 0 -0.35rem 0;
     font-size: 1.75rem;
@@ -120,6 +181,15 @@ export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
     padding: 2px 0;
     flex-direction: column;
     height: 10px;
+`;
+
+export const SkeletonCattegory = styled(Skeleton).attrs(({
+    baseColor:"#c4c4c4", 
+    highlightColor:"#f1f1f1",
+}))`
+    border-radius: 12px;
+    padding: 0.5rem 3rem;
+    cursor: pointer;
 `;
 
 export const ScrollAreaThumb = styled(ScrollArea.ScrollAreaThumb)`
@@ -174,6 +244,31 @@ export const CategoryTitle = styled.h2`
     margin-top: 1.25rem;
     margin-bottom: 1rem;
 `;
+
+export const SkeletonCatTitle = styled(Skeleton).attrs(({
+    baseColor:"#c4c4c4", 
+    highlightColor:"#f1f1f1",
+}))`
+    width: 10rem;
+    height: 1.5rem;
+    margin: 0 8px;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+`;
+
+export const SkeletonProduct = styled(Skeleton).attrs(({
+    baseColor:"#c4c4c4", 
+    highlightColor:"#f1f1f1",
+}))`
+    flex-direction: row;
+    border-radius: 16px;
+    width: 100%;
+    cursor: pointer;
+    height: 132px;
+`;
+
+
 export const ProductCategoryBox = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
