@@ -23,6 +23,7 @@ export function Home() {
     const [filteredProductList, setFilteredProductList] = useState([])
 
     const { cart, totalCartPrice } = useContext(CartContext)
+    console.log(totalCartPrice);
 
     useEffect(() => {
         getClientData();
@@ -98,8 +99,8 @@ export function Home() {
                             <CategoryBox paddingTop="0.8rem">
                                 {loading ? 
                                     <>
-                                        {arr.map(() => (
-                                            <SkeletonCattegory />
+                                        {arr.map((k) => (
+                                            <SkeletonCattegory key={k} />
                                         ))}
                                     </>
                                 : 

@@ -16,9 +16,9 @@ export function CartContextProvider({ children }) {
         cart.map(item => {
             let totalOptions = 0;
             item.options.map(opt => {
-                totalOptions += opt.price;
+                totalOptions += parseInt(opt.price);
             })
-            totalSum += (item.price + totalOptions)*item.amount;
+            totalSum += (parseInt(item.price) + totalOptions)*item.amount;
         })
 
         setTotalCartPrice(totalSum);

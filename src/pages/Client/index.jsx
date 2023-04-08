@@ -70,9 +70,7 @@ export function Client() {
 
                     ))}
                 </>
-                    
                 }
-  
             </ClientList>
         </Container>
     )
