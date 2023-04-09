@@ -58,7 +58,7 @@ export function AddToCartDialog({data}) {
             options: optionsSelected
         }
         addToCart(product)
-        setPrice(data.price.discounted === "" ? parseInt(data.price.original) : parseInt(data.price.discounted))
+        setPrice(data.price.discounted === "" ? data.price.original : data.price.discounted)
     }
 
     useEffect(() => {
@@ -68,9 +68,9 @@ export function AddToCartDialog({data}) {
     useEffect(() => {
         let currentPrice = 0
         if(data.price.discounted === "") {
-            currentPrice = parseInt(data.price.original) * amount;
+            currentPrice = parseFloat(data.price.original) * amount;
         } else {
-            currentPrice = parseInt(data.price.discounted) * amount;
+            currentPrice = parseFloat(data.price.discounted) * amount;
         }
 
         currentPrice += calculateOptionsSelectedPrice();

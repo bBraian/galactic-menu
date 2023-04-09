@@ -11,7 +11,8 @@ export function CartProduct({ product }) {
         product.options.map(opt => {
             price += opt.price;
         })
-        return price;
+        let priceFormatted = parseInt(price).toFixed(2);
+        return priceFormatted;
     }
     return (
         <Container>
