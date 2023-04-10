@@ -31,8 +31,6 @@ export function Cart() {
                     <IoArrowBackOutline /> Voltar
                 </BackHomeButton>
 
-                <ImgBg src={CompanyBg} />
-
                 <HeaderTitle>
                     Galaxy Menu | Carrinho
                 </HeaderTitle>
