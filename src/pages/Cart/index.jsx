@@ -3,7 +3,6 @@ import { IoArrowBackOutline } from "react-icons/io5"
 import { CartProduct } from "../../components/CartProduct";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import CompanyBg from "../../assets/images/companybg.png";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
