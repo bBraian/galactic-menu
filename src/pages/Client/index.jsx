@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../lib/axios";
 import { ClientBg, ClientBox, ClientList, ClientPhoto, ClientTitle, CompanyBgImg, CompanyInfos, CompanyLogo, CompanyTitle, Container, Header } from "./styles";
 import bgimg from '../../assets/images/companybg.png';
@@ -6,10 +6,12 @@ import company from '../../assets/images/companylogo.png';
 import { useNavigate } from "react-router-dom";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { CartContext } from "../../context/CartContext";
 
 export function Client() {
     const [clients, setClients] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { setCart } = useContext(CartContext)
     const navigate = useNavigate()
 
     async function getClients() {
@@ -24,6 +26,7 @@ export function Client() {
 
     useEffect(() => {
         getClients();
+        setCart([])
     }, [])
     return (
         <Container>
