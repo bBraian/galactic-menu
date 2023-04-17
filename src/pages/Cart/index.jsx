@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 export function Cart() {
     const { cart, totalCartPrice } = useContext(CartContext)
+    console.log(cart)
     const navigate = useNavigate();
 
     useEffect(() => {
