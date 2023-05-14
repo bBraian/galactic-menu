@@ -12,7 +12,7 @@ export function Home() {
     const [client, setClient] = useState({})
     const [header, setHeader] = useState('normal')
     const [loading, setLoading] = useState(true);
-    const { clientName } = useParams();
+    const { clientUrl } = useParams();
     const arr = [0,1,2,3];
 
     const [foodCategory, setFoodCategory] = useState([]);
@@ -22,7 +22,6 @@ export function Home() {
     const [filteredProductList, setFilteredProductList] = useState([])
 
     const { cart, totalCartPrice } = useContext(CartContext)
-    console.log(totalCartPrice);
 
     useEffect(() => {
         getClientData();
@@ -48,15 +47,15 @@ export function Home() {
     }, [categorySelected])
     
     async function getClientData() {
-        const cli = await api.get('clients?name='+clientName);
+        const cli = await api.get('clients?clientUrl='+clientUrl);
         setClient(cli.data);
         const clientId = await cli.data.id;
 
-        const cat = await api.get('categories?clientId='+clientId);
-        setFoodCategory(cat.data);
+        // const cat = await api.get('categories?clientId='+clientId);
+        // setFoodCategory(cat.data);
 
-        const res = await api.get('products?clientId='+clientId);
-        setProductList(res.data);
+        // const res = await api.get('products?clientId='+clientId);
+        // setProductList(res.data);
         setLoading(false);
     }
 

@@ -9,7 +9,7 @@ export function Router() {
     return (
         <Routes>
             <Route path='/' element={<Client/>} />
-            <Route path={'/:clientName'} element={<Home />} />
+            <Route path={'/:clientUrl'} element={<Home />} />
             <Route path='/login' element={<Login/>} />
             <Route path='/admin' element={<Admin/>} />
             <Route path='/cart' element={<Cart/>} />
