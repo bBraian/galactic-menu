@@ -65,6 +65,11 @@ export function Admin() {
                     <ScrollArea.Root>
                         <ScrollArea.Viewport>
                             <CategoryBox paddingTop="0.8rem">
+                                <CategoryButton
+                                    active="false"
+                                    key="0"
+                                    data={{id: 0, title: 'Nova categoria +'}}
+                                />
                                 {foodCategory.map(category => {
                                     return (
                                         <CategoryButton
