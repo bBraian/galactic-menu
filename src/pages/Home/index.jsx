@@ -47,8 +47,9 @@ export function Home() {
     }, [categorySelected])
     
     async function getClientData() {
-        const cli = await api.get('clients?clientUrl='+clientUrl);
-        setClient(cli.data);
+        const cli = await api.get('clients/'+clientUrl);
+        setClient(cli.data)
+        setFoodCategory(cli.data.Categories)
         const clientId = await cli.data.id;
 
         // const cat = await api.get('categories?clientId='+clientId);
