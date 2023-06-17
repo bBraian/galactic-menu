@@ -18,7 +18,7 @@ import { AddToCartDialog } from "../AddToCartDialog";
 export function Product({data}) {
     const [discount, setDiscount] = useState(false);
     useEffect(() => {
-        if(data.price.discounted !== "") {
+        if(data.price_discounted != null) {
             calculateDiscount();
         } 
     }, [])
@@ -49,11 +49,11 @@ export function Product({data}) {
                         </ProductInfos>
 
                         <ProductInfos>
-                            {data.price.discounted === "" ? 
+                            {data.price_discounted == null ? 
                                 (
                                     <Price>
                                         <ProductPrice>
-                                            {data.price.original.toLocaleString('pt-br', {
+                                            {data.price_original.toLocaleString('pt-br', {
                                                 style: 'currency',
                                                 currency: 'BRL'
                                             })}                
@@ -63,13 +63,13 @@ export function Product({data}) {
                                 (
                                     <Price>
                                         <ProductPrice>
-                                            {data.price.discounted.toLocaleString('pt-br', {
+                                            {data.price_discounted.toLocaleString('pt-br', {
                                                 style: 'currency',
                                                 currency: 'BRL'
                                             })}                
                                         </ProductPrice>
                                         <ProductPrice discount={true}>
-                                            {data.price.original.toLocaleString('pt-br', {
+                                            {data.price_original.toLocaleString('pt-br', {
                                                 style: 'currency',
                                                 currency: 'BRL'
                                             })}                

@@ -53,12 +53,12 @@ export function AddToCartDialog({data}) {
             id: data.id,
             imageUrl: data.imageUrl,
             title: data.title,
-            price: data.price.discounted === "" ? data.price.original : data.price.discounted,
+            price: data.price_discounted === "" ? data.price_original : data.price_discounted,
             amount: amount,
             options: optionsSelected
         }
         addToCart(product)
-        setPrice(data.price.discounted === "" ? data.price.original : data.price.discounted)
+        setPrice(data.price_discounted === "" ? data.price_original : data.price_discounted)
     }
 
     useEffect(() => {
@@ -67,10 +67,10 @@ export function AddToCartDialog({data}) {
 
     useEffect(() => {
         let currentPrice = 0
-        if(data.price.discounted === "") {
-            currentPrice = parseFloat(data.price.original) * amount;
+        if(data.price_discounted === "") {
+            currentPrice = parseFloat(data.price_original) * amount;
         } else {
-            currentPrice = parseFloat(data.price.discounted) * amount;
+            currentPrice = parseFloat(data.price_discounted) * amount;
         }
 
         currentPrice += calculateOptionsSelectedPrice();
@@ -100,11 +100,11 @@ export function AddToCartDialog({data}) {
                             <ScrollSafeArea>
                                 <ProductTitleMobile>{data.title}</ProductTitleMobile>
                                 <Description>{data.description}</Description>
-                                { data.price.discounted === "" ? 
+                                { data.price_discounted === "" ? 
                                     (
                                         <Price>
                                             <ProductPrice>
-                                                {data.price.original.toLocaleString('pt-br', {
+                                                {data.price_original.toLocaleString('pt-br', {
                                                     style: 'currency',
                                                     currency: 'BRL'
                                                 })}                
@@ -114,13 +114,13 @@ export function AddToCartDialog({data}) {
                                     (
                                         <Price>
                                             <ProductPrice>
-                                                {data.price.discounted.toLocaleString('pt-br', {
+                                                {data.price_discounted.toLocaleString('pt-br', {
                                                     style: 'currency',
                                                     currency: 'BRL'
                                                 })}                
                                             </ProductPrice>
                                             <ProductPrice discount={true}>
-                                                {data.price.original.toLocaleString('pt-br', {
+                                                {data.price_original.toLocaleString('pt-br', {
                                                     style: 'currency',
                                                     currency: 'BRL'
                                                 })}                

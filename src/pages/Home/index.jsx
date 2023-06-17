@@ -50,6 +50,7 @@ export function Home() {
         const cli = await api.get('clients/'+clientUrl);
         setClient(cli.data)
         setFoodCategory(cli.data.Categories)
+        setProductList(cli.data.Products)
         const clientId = await cli.data.id;
 
         // const cat = await api.get('categories?clientId='+clientId);
@@ -96,6 +97,11 @@ export function Home() {
                                     </>
                                 : 
                                 <>
+                                    <CategoryButton
+                                        active={categorySelected === 0 ? true : false}
+                                        data={{id:0, title: 'Todos'}}
+                                        setCategorySelected={setCategorySelected}
+                                    />
                                     {foodCategory.map(category => {
                                         return (
                                             <CategoryButton
@@ -131,6 +137,11 @@ export function Home() {
                         <ScrollArea.Root>
                             <ScrollArea.Viewport>
                                 <CategoryBox paddingTop="0.8rem">
+                                    <CategoryButton
+                                        active={categorySelected === 0 ? true : false}
+                                        data={{id:0, title: 'Todos'}}
+                                        setCategorySelected={setCategorySelected}
+                                    />
                                     {foodCategory.map(category => {
                                         return (
                                             <CategoryButton
@@ -193,15 +204,17 @@ export function Home() {
                         </>
                     ) : (
                         <>
-                        { productList.map(product => {
+                        { foodCategory.map(category => {
                             return (
-                                <CategoryDiv key={product.categoryId}>
-                                    <CategoryTitle>{product.categoryTitle}</CategoryTitle>
+                                <CategoryDiv key={category.id}>
+                                    <CategoryTitle>{category.title}</CategoryTitle>
                                     <ProductCategoryBox>
-                                        {product.categoryProducts.map(prod => {
-                                            return (
-                                                <Product key={prod.id} data={{...prod, categoryId: product.categoryId}} />
-                                            )
+                                        {productList.map(product => {
+                                            if(product.categories_id === category.id) {
+                                                return (
+                                                    <Product key={product.id} data={{...product, categoryId: product.categories_id}} />
+                                                )
+                                            }
                                         })}
                                     </ProductCategoryBox>
                                 </CategoryDiv>
