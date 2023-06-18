@@ -24,8 +24,8 @@ export function Product({data}) {
     }, [])
 
     function calculateDiscount() {
-        let originalPrice = parseFloat(data.price.original);
-        let priceWithDiscount = parseFloat(data.price.discounted);
+        let originalPrice = parseFloat(data.price_original);
+        let priceWithDiscount = parseFloat(data.price_discounted);
         let result = (100 - ((priceWithDiscount * 100) / originalPrice));
         setDiscount(result.toFixed(0));
     }
@@ -37,7 +37,7 @@ export function Product({data}) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.9 }}
                 >
-                    <Image src={data.imageUrl} />
+                    <Image src={data.image_url} />
                     <Content>
 
                         <ProductInfos>
@@ -49,7 +49,7 @@ export function Product({data}) {
                         </ProductInfos>
 
                         <ProductInfos>
-                            {data.price_discounted == null ? 
+                            {data.price_discounted == 0 ? 
                                 (
                                     <Price>
                                         <ProductPrice>
