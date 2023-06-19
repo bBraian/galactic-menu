@@ -49,15 +49,10 @@ export function Home() {
     async function getClientData() {
         const cli = await api.get('clients/'+clientUrl);
         setClient(cli.data)
-        setFoodCategory(cli.data.Categories)
+        setFoodCategory(cli.data.Categories.filter(category => {
+            return cli.data.Products.some(product => product.categories_id === category.id);
+        }))
         setProductList(cli.data.Products)
-        const clientId = await cli.data.id;
-
-        // const cat = await api.get('categories?clientId='+clientId);
-        // setFoodCategory(cat.data);
-
-        // const res = await api.get('products?clientId='+clientId);
-        // setProductList(res.data);
         setLoading(false);
     }
 
