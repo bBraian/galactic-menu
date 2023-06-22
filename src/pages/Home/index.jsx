@@ -22,7 +22,8 @@ export function Home() {
     const [filteredProductList, setFilteredProductList] = useState([])
 
     const { cart, totalCartPrice } = useContext(CartContext)
-
+    console.log(categorySelected)
+    console.log(productList)
     useEffect(() => {
         getClientData();
 
@@ -42,7 +43,7 @@ export function Home() {
 
     useEffect(() => {
         if(categorySelected !== 0) {
-            setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
+            setFilteredProductList(productList.filter(product => product.categories_id === categorySelected))
         }
     }, [categorySelected])
     
@@ -179,22 +180,24 @@ export function Home() {
                 <>
                     {categorySelected !== 0 ? (
                         <>
-                        { filteredProductList.map(product => {
-                            return (
-                                <CategoryDiv key={product.categoryId}>
-                                    <CategoryTitle>{product.categoryTitle}</CategoryTitle>
-                                    <ProductCategoryBox>
-                                        {product.categoryProducts.map(prod => {
-                                            return (
-                                                <Product 
-                                                    key={prod.id} 
-                                                    data={{...prod, categoryId: product.categoryId}} 
-                                                />
-                                            )
-                                        })}
-                                    </ProductCategoryBox>
-                                </CategoryDiv>
-                            )
+                        { foodCategory.map(category => {
+                            if(category.id === categorySelected) {
+                                return (
+                                    <CategoryDiv key={category.id}>
+                                        <CategoryTitle>{category.title}</CategoryTitle>
+                                        <ProductCategoryBox>
+                                            {filteredProductList.map(product => {
+                                                return (
+                                                    <Product 
+                                                        key={product.id} 
+                                                        data={{...product, categoryId: product.categories_id}} 
+                                                    />
+                                                )
+                                            })}
+                                        </ProductCategoryBox>
+                                    </CategoryDiv>
+                                )
+                            }
                         })}
                         </>
                     ) : (

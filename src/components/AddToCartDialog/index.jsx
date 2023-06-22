@@ -62,7 +62,7 @@ export function AddToCartDialog({data}) {
     }
 
     useEffect(() => {
-        getOptions(data.categoryId);
+        // getOptions(data.categoryId);
     }, [])
 
     useEffect(() => {
