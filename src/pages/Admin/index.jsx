@@ -6,17 +6,17 @@ import { Product } from "../../components/Product";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 export function Admin() {
+    const [client, setClient] = useState({})
     const [header, setHeader] = useState('normal')
 
-    const [foodCategory, setFoodCategory] = useState([]);
+    const [category, setCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
 
     const [productList, setProductList] = useState([])
     const [filteredProductList, setFilteredProductList] = useState([])
 
     useEffect(() => {
-        getFoodCategory();
-        getProductList();
+        getClientData();
 
         function scrollListner() {
             if(window.scrollY > 100) {
@@ -34,20 +34,19 @@ export function Admin() {
 
     useEffect(() => {
         if(categorySelected !== 0) {
-            setFilteredProductList(productList.filter(product => product.categoryId === categorySelected))
+            setFilteredProductList(productList.filter(product => product.categories_id === categorySelected))
         }
     }, [categorySelected])
     
-    async function getFoodCategory() {
-        const res = await api.get('categories');
-        setFoodCategory(res.data);
+    async function getClientData() {
+        const cli = await api.get('clients/braians');
+        setClient(cli.data)
+        setCategory(cli.data.Categories.filter(category => {
+            return cli.data.Products.some(product => product.categories_id === category.id);
+        }))
+        setProductList(cli.data.Products)
+        setLoading(false);
     }
-
-    async function getProductList() {
-        const res = await api.get('products');
-        setProductList(res.data);
-    }
-    const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
     return (
         <Container>
@@ -58,7 +57,7 @@ export function Admin() {
                     <CompanyBgImg src="https://d3lryrecr523dy.cloudfront.net/companies/backgrounds/35c32a3f-0097-445d-a4d2-a65eb2fa46ad.webp" />
                     <CompanyInfos>
                         <CompanyLogo src="https://d3lryrecr523dy.cloudfront.net/companies/logos/94689c97-dc07-4429-b634-0189bc84c128.webp" />
-                        <CompanyTitle>Braia's Bar</CompanyTitle>
+                        <CompanyTitle>{client.title}</CompanyTitle>
                     </CompanyInfos>
 
                    
@@ -70,10 +69,15 @@ export function Admin() {
                                     key="0"
                                     data={{id: 0, title: 'Nova categoria +'}}
                                 />
-                                {foodCategory.map(category => {
+                                <CategoryButton
+                                    active={categorySelected === 0}
+                                    data={{id:0, title: 'Todos'}}
+                                    setCategorySelected={setCategorySelected}
+                                />
+                                {category.map(category => {
                                     return (
                                         <CategoryButton
-                                            active={categorySelected === category.id ? true : false}
+                                            active={categorySelected === category.id}
                                             key={category.id}
                                             data={category}
                                             setCategorySelected={setCategorySelected}
@@ -96,20 +100,31 @@ export function Admin() {
                 <HeaderFixed>
                     <HeaderFixedBox>
                         <CompanyInfos>
-                            <CompanyTitleSm>Braia's Bar</CompanyTitleSm>
+                            <CompanyTitleSm>{client.title}</CompanyTitleSm>
                         </CompanyInfos>
 
                         <ScrollArea.Root>
                             <ScrollArea.Viewport>
                                 <CategoryBox paddingTop="0.8rem">
-                                    {foodCategory.map(category => {
+                                    <CategoryButton
+                                        active="false"
+                                        key="0"
+                                        data={{id: 0, title: 'Nova categoria +'}}
+                                    />
+                                    <CategoryButton
+                                        active={categorySelected === 0}
+                                        data={{id:0, title: 'Todos'}}
+                                        setCategorySelected={setCategorySelected}
+                                    />
+                                    {category.map(category => {
                                         return (
                                             <CategoryButton
-                                                active={categorySelected === category.id ? true : false}
+                                                active={categorySelected === category.id}
                                                 key={category.id}
                                                 data={category}
                                                 setCategorySelected={setCategorySelected}
                                             />
+                                            
                                         )
                                     })}
                                 </CategoryBox>
@@ -129,32 +144,39 @@ export function Admin() {
             <FoodList>
                 {categorySelected !== 0 ? (
                     <>
-                    { filteredProductList.map(product => {
-                        return (
-                            <CategoryDiv key={product.categoryId}>
-                                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
-                                <ProductCategoryBox>
-                                    {product.categoryProducts.map(prod => {
-                                        return (
-                                            <Product key={prod.id} data={prod} />
-                                        )
-                                    })}
-                                </ProductCategoryBox>
-                            </CategoryDiv>
-                        )
+                    { category.map(category => {
+                        if(category.id === categorySelected) {
+                            return (
+                                <CategoryDiv key={category.id}>
+                                    <CategoryTitle>{category.title}</CategoryTitle>
+                                    <ProductCategoryBox>
+                                        {filteredProductList.map(product => {
+                                            return (
+                                                <Product 
+                                                    key={product.id} 
+                                                    data={{...product, categoryId: product.categories_id}} 
+                                                />
+                                            )
+                                        })}
+                                    </ProductCategoryBox>
+                                </CategoryDiv>
+                            )
+                        }
                     })}
                     </>
                 ) : (
                     <>
-                    { productList.map(product => {
+                    { category.map(category => {
                         return (
-                            <CategoryDiv key={product.categoryId}>
-                                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
+                            <CategoryDiv key={category.id}>
+                                <CategoryTitle>{category.title}</CategoryTitle>
                                 <ProductCategoryBox>
-                                    {product.categoryProducts.map(prod => {
-                                        return (
-                                            <Product key={prod.id} data={prod} />
-                                        )
+                                    {productList.map(product => {
+                                        if(product.categories_id === category.id) {
+                                            return (
+                                                <Product key={product.id} data={{...product, categoryId: product.categories_id}} />
+                                            )
+                                        }
                                     })}
                                 </ProductCategoryBox>
                             </CategoryDiv>
@@ -162,8 +184,6 @@ export function Admin() {
                     })}
                     </>
                 )}
- 
-   
             </FoodList>
         </Container>
     )

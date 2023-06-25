@@ -15,15 +15,13 @@ export function Home() {
     const { clientUrl } = useParams();
     const arr = [0,1,2,3];
 
-    const [foodCategory, setFoodCategory] = useState([]);
+    const [category, setCategory] = useState([]);
     const [categorySelected, setCategorySelected] = useState(0);
 
     const [productList, setProductList] = useState([])
     const [filteredProductList, setFilteredProductList] = useState([])
 
     const { cart, totalCartPrice } = useContext(CartContext)
-    console.log(categorySelected)
-    console.log(productList)
     useEffect(() => {
         getClientData();
 
@@ -50,7 +48,7 @@ export function Home() {
     async function getClientData() {
         const cli = await api.get('clients/'+clientUrl);
         setClient(cli.data)
-        setFoodCategory(cli.data.Categories.filter(category => {
+        setCategory(cli.data.Categories.filter(category => {
             return cli.data.Products.some(product => product.categories_id === category.id);
         }))
         setProductList(cli.data.Products)
@@ -94,14 +92,14 @@ export function Home() {
                                 : 
                                 <>
                                     <CategoryButton
-                                        active={categorySelected === 0 ? true : false}
+                                        active={categorySelected === 0}
                                         data={{id:0, title: 'Todos'}}
                                         setCategorySelected={setCategorySelected}
                                     />
-                                    {foodCategory.map(category => {
+                                    {category.map(category => {
                                         return (
                                             <CategoryButton
-                                                active={categorySelected === category.id ? true : false}
+                                                active={categorySelected === category.id}
                                                 key={category.id}
                                                 data={category}
                                                 setCategorySelected={setCategorySelected}
@@ -134,14 +132,14 @@ export function Home() {
                             <ScrollArea.Viewport>
                                 <CategoryBox paddingTop="0.8rem">
                                     <CategoryButton
-                                        active={categorySelected === 0 ? true : false}
+                                        active={categorySelected === 0}
                                         data={{id:0, title: 'Todos'}}
                                         setCategorySelected={setCategorySelected}
                                     />
-                                    {foodCategory.map(category => {
+                                    {category.map(category => {
                                         return (
                                             <CategoryButton
-                                                active={categorySelected === category.id ? true : false}
+                                                active={categorySelected === category.id}
                                                 key={category.id}
                                                 data={category}
                                                 setCategorySelected={setCategorySelected}
@@ -180,7 +178,7 @@ export function Home() {
                 <>
                     {categorySelected !== 0 ? (
                         <>
-                        { foodCategory.map(category => {
+                        { category.map(category => {
                             if(category.id === categorySelected) {
                                 return (
                                     <CategoryDiv key={category.id}>
@@ -202,7 +200,7 @@ export function Home() {
                         </>
                     ) : (
                         <>
-                        { foodCategory.map(category => {
+                        { category.map(category => {
                             return (
                                 <CategoryDiv key={category.id}>
                                     <CategoryTitle>{category.title}</CategoryTitle>
