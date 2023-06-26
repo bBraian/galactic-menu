@@ -45,7 +45,6 @@ export function Admin() {
             return cli.data.Products.some(product => product.categories_id === category.id);
         }))
         setProductList(cli.data.Products)
-        setLoading(false);
     }
 
     return (
@@ -154,7 +153,7 @@ export function Admin() {
                                             return (
                                                 <Product 
                                                     key={product.id} 
-                                                    data={{...product, categoryId: product.categories_id}} 
+                                                    data={product} 
                                                 />
                                             )
                                         })}
@@ -172,9 +171,10 @@ export function Admin() {
                                 <CategoryTitle>{category.title}</CategoryTitle>
                                 <ProductCategoryBox>
                                     {productList.map(product => {
+                                        console.log(product)
                                         if(product.categories_id === category.id) {
                                             return (
-                                                <Product key={product.id} data={{...product, categoryId: product.categories_id}} />
+                                                <Product key={product.id} data={product} />
                                             )
                                         }
                                     })}

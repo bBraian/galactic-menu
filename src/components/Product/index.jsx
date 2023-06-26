@@ -14,6 +14,7 @@ import {
 } from "./styles";
 import * as Dialog from '@radix-ui/react-dialog';
 import { AddToCartDialog } from "../AddToCartDialog";
+import { formatNumberToPrice } from "../../utils";
 
 export function Product({data}) {
     const [discount, setDiscount] = useState(false);
@@ -29,7 +30,7 @@ export function Product({data}) {
         let result = (100 - ((priceWithDiscount * 100) / originalPrice));
         setDiscount(result.toFixed(0));
     }
-    
+
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild >
@@ -49,30 +50,22 @@ export function Product({data}) {
                         </ProductInfos>
 
                         <ProductInfos>
-                            {data.price_discounted == 0 ? 
+                            {data.price_discounted === null ? 
                                 (
                                     <Price>
-                                        <ProductPrice>
-                                            {data.price_original.toLocaleString('pt-br', {
-                                                style: 'currency',
-                                                currency: 'BRL'
-                                            })}                
+                                        <ProductPrice>             
+                                            {formatNumberToPrice(data.price_original)}                
                                         </ProductPrice>
                                     </Price>
-                                ) : 
+                                ) 
+                                    : 
                                 (
                                     <Price>
                                         <ProductPrice>
-                                            {data.price_discounted.toLocaleString('pt-br', {
-                                                style: 'currency',
-                                                currency: 'BRL'
-                                            })}                
+                                            {formatNumberToPrice(data.price_discounted)}        
                                         </ProductPrice>
                                         <ProductPrice discount={true}>
-                                            {data.price_original.toLocaleString('pt-br', {
-                                                style: 'currency',
-                                                currency: 'BRL'
-                                            })}                
+                                            {formatNumberToPrice(data.price_original)}
                                         </ProductPrice>
                                     </Price>
                                 ) 

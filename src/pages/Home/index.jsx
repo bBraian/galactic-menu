@@ -188,7 +188,7 @@ export function Home() {
                                                 return (
                                                     <Product 
                                                         key={product.id} 
-                                                        data={{...product, categoryId: product.categories_id}} 
+                                                        data={product} 
                                                     />
                                                 )
                                             })}
@@ -208,7 +208,7 @@ export function Home() {
                                         {productList.map(product => {
                                             if(product.categories_id === category.id) {
                                                 return (
-                                                    <Product key={product.id} data={{...product, categoryId: product.categories_id}} />
+                                                    <Product key={product.id} data={product} />
                                                 )
                                             }
                                         })}

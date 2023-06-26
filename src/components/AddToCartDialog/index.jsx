@@ -100,7 +100,7 @@ export function AddToCartDialog({data}) {
                             <ScrollSafeArea>
                                 <ProductTitleMobile>{data.title}</ProductTitleMobile>
                                 <Description>{data.description}</Description>
-                                { data.price_discounted === "" ? 
+                                { data.price_discounted === null ? 
                                     (
                                         <Price>
                                             <ProductPrice>
@@ -110,7 +110,8 @@ export function AddToCartDialog({data}) {
                                                 })}                
                                             </ProductPrice>
                                         </Price>
-                                    ) : 
+                                    ) 
+                                        : 
                                     (
                                         <Price>
                                             <ProductPrice>
