@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom"
 
 export const Container = styled.div`
     display: flex;
@@ -11,7 +10,7 @@ export const Container = styled.div`
     background: linear-gradient(0deg,rgb(0 8 98) 0%,rgb(165 45 255) 100%);
 `;
 
-export const LoginContainer = styled.div`
+export const LoginContainer = styled.form`
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -76,7 +75,7 @@ export const ForgotPassword = styled.p`
     margin-top: 1rem;
 `;
 
-export const LoginButton = styled(Link)`
+export const LoginButton = styled.button`
     height: 54px;
     border: 1px solid #9329EE;
     background-color: #9329EE;
@@ -92,4 +91,5 @@ export const LoginButton = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 `;
